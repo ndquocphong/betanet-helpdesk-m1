@@ -1,0 +1,7 @@
+<config>
+    <modules>
+        <Betanet_HelpDesk>
+            <version>1.0.0</version>
+        </Betanet_HelpDesk>
+    </modules>
+</config>
