@@ -4,4 +4,17 @@
             <version>1.0.0</version>
         </Betanet_HelpDesk>
     </modules>
+    <global>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <Betanet_helpdesk_model_observer>
+                        <type>singleton</type>
+                        <class>Betanet_HelpDesk_Model_Observer</class>
+                        <method>checkForConfigRequest</method>
+                    </Betanet_helpdesk_model_observer>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
 </config>
