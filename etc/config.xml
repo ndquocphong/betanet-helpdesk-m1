@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <config>
     <modules>
         <Betanet_HelpDesk>
@@ -5,6 +6,11 @@
         </Betanet_HelpDesk>
     </modules>
     <global>
+        <helpers>
+            <betanet_helpdesk>
+                <class>Betanet_HelpDesk_Helper</class>
+            </betanet_helpdesk>
+        </helpers>
         <models>
             <betanet_helpdesk>
                 <class>Betanet_HelpDesk_Model</class>

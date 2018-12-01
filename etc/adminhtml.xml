@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <betanet_helpdesk module="betanet_helpdesk" translate="title">
+            <title>Betanet HelpDesk</title>
+            <sort_order>100</sort_order>
+            <children>
+                <index module="betanet_helpdesk" translate="title">
+                    <title>Status</title>
+                    <sort_order>1</sort_order>
+                </index>
+            </children>
+        </betanet_helpdesk>
+    </menu>
+</config>
