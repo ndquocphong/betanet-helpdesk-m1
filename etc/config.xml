@@ -4,4 +4,28 @@
             <version>1.0.0</version>
         </Betanet_HelpDesk>
     </modules>
+    <global>
+        <models>
+            <betanet_helpdesk>
+                <class>Betanet_HelpDesk_Model</class>
+                <resourceModel>betanet_helpdesk_resource</resourceModel>
+            </betanet_helpdesk>
+            <betanet_helpdesk_resource>
+                <class>Betanet_HelpDesk_Model_Resource</class>
+                <entities>
+                    <status>
+                        <table>betanet_helpdesk_status</table>
+                    </status>
+                </entities>
+            </betanet_helpdesk_resource>
+        </models>
+        <resources>
+            <betanet_helpdesk_setup>
+                <setup>
+                    <module>Betanet_HelpDesk</module>
+                    <class>Betanet_HelpDesk_Model_Resource_Setup</class>
+                </setup>
+            </betanet_helpdesk_setup>
+        </resources>
+    </global>
 </config>
