@@ -1,11 +1,12 @@
 <?php
+
 /** @var Betanet_HelpDesk_Model_Resource_Setup $installer */
 $installer = $this;
 $installer->startSetup();
 $connection = $installer->getConnection();
-$statusTableName = $installer->getTable('betanet_helpdesk/status');
-$statusTable = $connection->newTable($statusTableName)
-    ->addColumn('status_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
+$priorityTableName = $installer->getTable('betanet_helpdesk/priority');
+$priorityTable = $connection->newTable($priorityTableName)
+    ->addColumn('priority_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
         'unsigned' => true,
         'nullable' => false,
         'primary' => true,
@@ -17,9 +18,9 @@ $statusTable = $connection->newTable($statusTableName)
     ->addColumn('color', Varien_Db_Ddl_Table::TYPE_VARCHAR, 7, [
         'default' => '000000'
     ])
-    ->addIndex($installer->getIdxName($statusTableName, ['title'], Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE), ['title'], [
+    ->addIndex($installer->getIdxName($priorityTableName, ['title'], Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE), ['title'], [
         'type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
     ]);
 
-$connection->createTable($statusTable);
+$connection->createTable($priorityTable);
 $installer->endSetup();

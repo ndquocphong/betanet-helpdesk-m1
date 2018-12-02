@@ -10,6 +10,11 @@
                     <sort_order>10</sort_order>
                     <action>adminhtml/helpdesk_status</action>
                 </status>
+                <priority translate="title">
+                    <title>Priority</title>
+                    <sort_order>20</sort_order>
+                    <action>adminhtml/helpdesk_priority</action>
+                </priority>
             </children>
         </betanet_helpdesk>
     </menu>
@@ -35,6 +40,20 @@
                                     </delete>
                                 </children>
                             </status>
+                            <priority translate="title">
+                                <title>Priority</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>10</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Save</title>
+                                        <sort_order>20</sort_order>
+                                    </delete>
+                                </children>
+                            </priority>
                         </children>
                     </betanet_helpdesk>
                 </children>

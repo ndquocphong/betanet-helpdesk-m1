@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid_Column_Renderer_Colortext extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Longtext
+class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Widget_Grid_Column_Renderer_Colortext extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Longtext
 {
     /**
      * {@inheritdoc}

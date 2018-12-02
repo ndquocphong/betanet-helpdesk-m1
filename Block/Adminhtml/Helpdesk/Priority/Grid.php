@@ -1,16 +1,16 @@
 <?php
 
-class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     /**
-     * Betanet_HelpDesk_Block_Adminhtml_Status_Grid constructor.
+     * Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority_Grid constructor.
      * @param array $attributes
      */
     public function __construct(array $attributes = array())
     {
         parent::__construct($attributes);
-        $this->setId('betanet_helpdesk_status_grid');
-        $this->setDefaultSort('status_id');
+        $this->setId('betanet_helpdesk_priority_grid');
+        $this->setDefaultSort('priority_id');
         $this->setDefaultDir('DESC');
     }
 
@@ -21,7 +21,7 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
      */
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('betanet_helpdesk/status')->getCollection();
+        $collection = Mage::getModel('betanet_helpdesk/priority')->getCollection();
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -34,43 +34,42 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
      */
     protected function _prepareColumns()
     {
-        $this->addColumn('status_id', [
-            'header' => strtoupper(Mage::helper('betanet_helpdesk')->__('Id')),
+        $this->addColumn('priority_id', [
+            'header' => strtoupper($this->__('Id')),
             'align' => 'left',
-            'index' => 'status_id',
+            'index' => 'priority_id',
             'width' => '20px'
         ]);
 
         $this->addColumn('title', [
-            'header' => Mage::helper('betanet_helpdesk')->__('Title'),
+            'header' => $this->__('Title'),
             'align' => 'left',
             'index' => 'title',
             'renderer' => 'betanet_helpdesk_adminhtml/helpdesk_widget_grid_column_renderer_colortext'
         ]);
 
         $massActions = [];
-        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/status/save')) {
+        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/priority/save')) {
             $massActions[] = [
                 'caption' => $this->__('Edit'),
                 'url' => [
                     'base' => '*/*/edit'
                 ],
-                'field' => 'status_id'
+                'field' => 'priority_id'
             ];
         }
-        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/status/delete')) {
+        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/priority/delete')) {
             $massActions[] = [
-                'caption' => Mage::helper('betanet_helpdesk')->__('Delete'),
+                'caption' => $this->__('Delete'),
                 'url' => [
                     'base' => '*/*/delete',
                 ],
                 'confirm' => $this->__('Are you sure you want to do this?'),
-                'field' => 'status_id'
+                'field' => 'priority_id'
             ];
         }
-
         $this->addColumn('actions', [
-            'header' => Mage::helper('betanet_helpdesk')->__('Actions'),
+            'header' => $this->__('Actions'),
             'width' => '100px',
             'sortable' => false,
             'filter' => false,
@@ -89,10 +88,10 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
      */
     protected function _prepareMassaction()
     {
-        $this->setMassactionIdField('status_id');
-        $this->getMassactionBlock()->setFormFieldName('status_ids');
+        $this->setMassactionIdField('priority_id');
+        $this->getMassactionBlock()->setFormFieldName('priority_ids');
 
-        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/status/delete')) {
+        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/priority/delete')) {
             $this->getMassactionBlock()->addItem('delete', [
                 'label' => $this->__('Delete'),
                 'url' => $this->getUrl('*/*/massDelete'),

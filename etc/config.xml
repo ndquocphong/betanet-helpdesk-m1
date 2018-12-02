@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Betanet_HelpDesk>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </Betanet_HelpDesk>
     </modules>
     <global>
@@ -22,6 +22,9 @@
                     <status>
                         <table>betanet_helpdesk_status</table>
                     </status>
+                    <priority>
+                        <table>betanet_helpdesk_priority</table>
+                    </priority>
                 </entities>
             </betanet_helpdesk_resource>
         </models>
