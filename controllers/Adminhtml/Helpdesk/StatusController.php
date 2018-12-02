@@ -77,4 +77,32 @@ class Betanet_HelpDesk_Adminhtml_Helpdesk_StatusController extends Mage_Adminhtm
 
         return $this->_redirect('*/*/');
     }
+
+    public function deleteAction()
+    {
+        $id = $this->getRequest()->getParam('status_id');
+        if (!$this->getRequest()->isPost() || !$id) {
+            return $this->_redirect('*/*/');
+        }
+
+        $model = Mage::getModel('betanet_helpdesk/status');
+        $model->load($id);
+        if (!$model->getId()) {
+            Mage::getSingleton('adminhtml/session')
+                ->addError($this->__('The Status [%s] does not exist.', $id));
+            return $this->_redirect('*/*');
+        }
+
+        try {
+            $title = $model->getTitle();
+            $model->delete();
+            $this->_getSession()->addSuccess($this->__('The Status [%s] have been deleted successfully.', $title));
+        } catch (Mage_Core_Exception $e) {
+            $this->_getSession()->addError($e->getMessage());
+        } catch (\Exception $e) {
+            $this->_getSession()->addException($e, $this->__('An error occurred while deleting the status.'));
+        }
+
+        return $this->_redirect('*/*/');
+    }
 }

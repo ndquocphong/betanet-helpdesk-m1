@@ -65,8 +65,9 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
                 [
                     'caption' => Mage::helper('betanet_helpdesk')->__('Delete'),
                     'url' => [
-                        'base' => '*/*/delete'
+                        'base' => '*/*/delete',
                     ],
+                    'confirm' => $this->__('Are you sure you want to do this?'),
                     'field' => 'status_id'
                 ]
             ],
