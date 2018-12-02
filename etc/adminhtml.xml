@@ -5,10 +5,11 @@
             <title>Betanet HelpDesk</title>
             <sort_order>100</sort_order>
             <children>
-                <index module="betanet_helpdesk" translate="title">
+                <status translate="title">
                     <title>Status</title>
                     <sort_order>1</sort_order>
-                </index>
+                    <action>adminhtml/helpdesk_status</action>
+                </status>
             </children>
         </betanet_helpdesk>
     </menu>

@@ -33,5 +33,30 @@
                 </setup>
             </betanet_helpdesk_setup>
         </resources>
+        <blocks>
+            <betanet_helpdesk>
+                <class>Betanet_HelpDesk_Block</class>
+            </betanet_helpdesk>
+        </blocks>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Betanet_HelpDesk>Betanet_HelpDesk_Adminhtml</Betanet_HelpDesk>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <betanet_helpdesk>
+                    <file>betanet_helpdesk.xml</file>
+                </betanet_helpdesk>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>
