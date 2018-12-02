@@ -17,7 +17,9 @@ $statusTable = $connection->newTable($statusTableName)
     ->addColumn('color', Varien_Db_Ddl_Table::TYPE_VARCHAR, 7, [
         'default' => '#000000'
     ])
-    ->addIndex($installer->getIdxName($statusTableName, ['title'], Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE), ['title'], Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE);
+    ->addIndex($installer->getIdxName($statusTableName, ['title'], Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE), ['title'], [
+        'type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
+    ]);
 
 $connection->createTable($statusTable);
 $installer->endSetup();

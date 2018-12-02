@@ -34,9 +34,9 @@
             </betanet_helpdesk_setup>
         </resources>
         <blocks>
-            <betanet_helpdesk>
-                <class>Betanet_HelpDesk_Block</class>
-            </betanet_helpdesk>
+            <betanet_helpdesk_adminhtml>
+                <class>Betanet_HelpDesk_Block_Adminhtml</class>
+            </betanet_helpdesk_adminhtml>
         </blocks>
     </global>
     <admin>
