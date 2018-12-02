@@ -65,6 +65,7 @@ class Betanet_HelpDesk_Adminhtml_Helpdesk_StatusController extends Mage_Adminhtm
 
         try {
             $model->save();
+            $this->_getSession()->setFormData(false);
             $this->_getSession()->addSuccess($this->__('The Status have been saved successfully.'));
             if ($this->getRequest()->getParam('back') === 'edit') {
                 return $this->_redirect('*/*/edit', ['status_id' => $model->getId()]);
@@ -88,8 +89,7 @@ class Betanet_HelpDesk_Adminhtml_Helpdesk_StatusController extends Mage_Adminhtm
         $model = Mage::getModel('betanet_helpdesk/status');
         $model->load($id);
         if (!$model->getId()) {
-            Mage::getSingleton('adminhtml/session')
-                ->addError($this->__('The Status [%s] does not exist.', $id));
+            $this->_getSession()->addError($this->__('The Status [%s] does not exist.', $id));
             return $this->_redirect('*/*');
         }
 
@@ -101,6 +101,39 @@ class Betanet_HelpDesk_Adminhtml_Helpdesk_StatusController extends Mage_Adminhtm
             $this->_getSession()->addError($e->getMessage());
         } catch (\Exception $e) {
             $this->_getSession()->addException($e, $this->__('An error occurred while deleting the status.'));
+        }
+
+        return $this->_redirect('*/*/');
+    }
+
+    public function massDeleteAction()
+    {
+        if (!$this->getRequest()->isPost()) {
+            return $this->_redirect('*/*/');
+        }
+
+        $success = [];
+        $statusIds = $this->getRequest()->getParam('status_ids');
+        foreach ($statusIds as $statusId) {
+            $model = Mage::getModel('betanet_helpdesk/status');
+            $model->load($statusId);
+            if (!$model->getId()) {
+                $this->_getSession()->addError($this->__('The Status [%s] does not exist.', $statusId));
+                return $this->_redirect('*/*');
+            }
+
+            try {
+                $model->delete();
+                $success[] = $statusId;
+            } catch (Mage_Core_Exception $e) {
+                $this->_getSession()->addError($e->getMessage());
+            } catch (\Exception $e) {
+                $this->_getSession()->addException($e, $this->__('An error occurred while deleting the status.'));
+            }
+        }
+
+        if ($success) {
+            $this->_getSession()->addSuccess($this->__('%s of %s have been deleted successfully.', count($success), count($statusIds)));
         }
 
         return $this->_redirect('*/*/');

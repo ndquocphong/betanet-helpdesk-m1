@@ -20,13 +20,6 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Edit extends Mage_Adminht
             function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');
             }
-            
-//            deleteConfirm = function(message, url) {
-//                if( confirm(message) ) {
-//                    editForm.submit(url);
-//                }
-//                return false;
-//            };
         ";
     }
 

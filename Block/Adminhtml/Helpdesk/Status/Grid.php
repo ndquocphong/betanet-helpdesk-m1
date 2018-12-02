@@ -75,4 +75,23 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
 
         return parent::_prepareColumns();
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return Mage_Adminhtml_Block_Widget_Grid
+     */
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('status_id');
+        $this->getMassactionBlock()->setFormFieldName('status_ids');
+
+        $this->getMassactionBlock()->addItem('delete', [
+            'label' => $this->__('Delete'),
+            'url' => $this->getUrl('*/*/massDelete'),
+            'confirm' => $this->__('Are you sure you want to do this?')
+        ]);
+
+        return parent::_prepareMassaction();
+    }
 }
