@@ -44,7 +44,8 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
         $this->addColumn('title', [
             'header' => Mage::helper('betanet_helpdesk')->__('Title'),
             'align' => 'left',
-            'index' => 'title'
+            'index' => 'title',
+            'renderer' => 'betanet_helpdesk_adminhtml/helpdesk_status_grid_column_renderer_colortext'
         ]);
 
         $this->addColumn('actions', [

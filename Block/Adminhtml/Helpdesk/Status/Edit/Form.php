@@ -47,6 +47,7 @@ class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Edit_Form extends Mage_Ad
             'name' => 'color',
             'label' => $this->__('Color'),
             'title' => $this->__('Color'),
+            'class' => 'jscolor'
         ]);
 
         $form->setValues($model->getData());
