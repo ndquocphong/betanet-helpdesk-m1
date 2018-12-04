@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<layout>
+    <adminhtml_helpdesk_status_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>betanet_helpdesk/tools.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_status" name="betanet_helpdesk_status_grid_container" />
+        </reference>
+    </adminhtml_helpdesk_status_index>
+    <adminhtml_helpdesk_status_edit>
+        <reference name="head">
+            <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
+            <action method="addJs"><script>betanet_helpdesk/jscolor.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_status_edit" name="betanet_helpdesk_status_edit_form" />
+        </reference>
+    </adminhtml_helpdesk_status_edit>
+    <adminhtml_helpdesk_priority_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>betanet_helpdesk/tools.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_priority" name="betanet_helpdesk_priority_grid_container" />
+        </reference>
+    </adminhtml_helpdesk_priority_index>
+    <adminhtml_helpdesk_priority_edit>
+        <reference name="head">
+            <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
+            <action method="addJs"><script>betanet_helpdesk/jscolor.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_priority_edit" name="betanet_helpdesk_priority_edit_form" />
+        </reference>
+    </adminhtml_helpdesk_priority_edit>
+    <adminhtml_helpdesk_department_index>
+        <reference name="head">
+            <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_department" name="betanet_helpdesk_department_grid_container" />
+        </reference>
+    </adminhtml_helpdesk_department_index>
+</layout>

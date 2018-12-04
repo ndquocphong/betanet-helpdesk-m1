@@ -15,6 +15,11 @@
                     <sort_order>20</sort_order>
                     <action>adminhtml/helpdesk_priority</action>
                 </priority>
+                <department translate="title">
+                    <title>Department</title>
+                    <sort_order>30</sort_order>
+                    <action>adminhtml/helpdesk_department</action>
+                </department>
             </children>
         </betanet_helpdesk>
     </menu>
@@ -35,7 +40,7 @@
                                         <sort_order>10</sort_order>
                                     </save>
                                     <delete translate="title">
-                                        <title>Save</title>
+                                        <title>Delete</title>
                                         <sort_order>20</sort_order>
                                     </delete>
                                 </children>
@@ -49,11 +54,25 @@
                                         <sort_order>10</sort_order>
                                     </save>
                                     <delete translate="title">
-                                        <title>Save</title>
+                                        <title>Delete</title>
                                         <sort_order>20</sort_order>
                                     </delete>
                                 </children>
                             </priority>
+                            <department translate="title">
+                                <title>Department</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>10</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>20</sort_order>
+                                    </delete>
+                                </children>
+                            </department>
                         </children>
                     </betanet_helpdesk>
                 </children>
