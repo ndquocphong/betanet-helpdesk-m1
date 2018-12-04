@@ -25,6 +25,9 @@
                     <priority>
                         <table>betanet_helpdesk_priority</table>
                     </priority>
+                    <department>
+                        <table>betanet_helpdesk_department</table>
+                    </department>
                 </entities>
             </betanet_helpdesk_resource>
         </models>
