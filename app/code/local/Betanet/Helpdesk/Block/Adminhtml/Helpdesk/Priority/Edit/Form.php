@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
     public function __construct(array $args = array())
     {

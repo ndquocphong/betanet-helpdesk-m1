@@ -1,9 +1,9 @@
 <?php
 
-class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     /**
-     * Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority_Grid constructor.
+     * Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority_Grid constructor.
      * @param array $attributes
      */
     public function __construct(array $attributes = array())

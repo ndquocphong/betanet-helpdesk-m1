@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Status_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Status_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     public function __construct()
     {

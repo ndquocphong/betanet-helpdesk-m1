@@ -1,5 +1,5 @@
 <?php
-/** @var Betanet_HelpDesk_Model_Resource_Setup $installer */
+/** @var Betanet_Helpdesk_Model_Resource_Setup $installer */
 $installer = $this;
 $statusTbName = $installer->getTable('betanet_helpdesk/status');
 $rows = [

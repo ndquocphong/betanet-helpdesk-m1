@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_HelpDesk_Model_Resource_Priority extends Mage_Core_Model_Resource_Db_Abstract
+class Betanet_Helpdesk_Model_Resource_Priority extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * {@inheritdoc}

@@ -2,7 +2,7 @@
 <config>
     <menu>
         <betanet_helpdesk module="betanet_helpdesk" translate="title">
-            <title>Betanet HelpDesk</title>
+            <title>Betanet Helpdesk</title>
             <sort_order>100</sort_order>
             <children>
                 <status translate="title">

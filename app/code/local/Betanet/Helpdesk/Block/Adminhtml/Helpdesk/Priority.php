@@ -1,9 +1,9 @@
 <?php
 
-class Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     /**
-     * Betanet_HelpDesk_Block_Adminhtml_Helpdesk_Priority constructor.
+     * Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority constructor.
      */
     public function __construct()
     {

@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_HelpDesk_Adminhtml_Helpdesk_PriorityController extends Mage_Adminhtml_Controller_Action
+class Betanet_Helpdesk_Adminhtml_Helpdesk_PriorityController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * {@inheritdoc}

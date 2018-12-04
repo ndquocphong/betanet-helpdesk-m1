@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Betanet_HelpDesk>
+        <Betanet_Helpdesk>
             <version>1.1.0</version>
-        </Betanet_HelpDesk>
+        </Betanet_Helpdesk>
     </modules>
     <global>
         <helpers>
             <betanet_helpdesk>
-                <class>Betanet_HelpDesk_Helper</class>
+                <class>Betanet_Helpdesk_Helper</class>
             </betanet_helpdesk>
         </helpers>
         <models>
             <betanet_helpdesk>
-                <class>Betanet_HelpDesk_Model</class>
+                <class>Betanet_Helpdesk_Model</class>
                 <resourceModel>betanet_helpdesk_resource</resourceModel>
             </betanet_helpdesk>
             <betanet_helpdesk_resource>
-                <class>Betanet_HelpDesk_Model_Resource</class>
+                <class>Betanet_Helpdesk_Model_Resource</class>
                 <entities>
                     <status>
                         <table>betanet_helpdesk_status</table>
@@ -34,14 +34,14 @@
         <resources>
             <betanet_helpdesk_setup>
                 <setup>
-                    <module>Betanet_HelpDesk</module>
-                    <class>Betanet_HelpDesk_Model_Resource_Setup</class>
+                    <module>Betanet_Helpdesk</module>
+                    <class>Betanet_Helpdesk_Model_Resource_Setup</class>
                 </setup>
             </betanet_helpdesk_setup>
         </resources>
         <blocks>
             <betanet_helpdesk_adminhtml>
-                <class>Betanet_HelpDesk_Block_Adminhtml</class>
+                <class>Betanet_Helpdesk_Block_Adminhtml</class>
             </betanet_helpdesk_adminhtml>
         </blocks>
     </global>
@@ -50,7 +50,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Betanet_HelpDesk>Betanet_HelpDesk_Adminhtml</Betanet_HelpDesk>
+                        <Betanet_Helpdesk>Betanet_Helpdesk_Adminhtml</Betanet_Helpdesk>
                     </modules>
                 </args>
             </adminhtml>

@@ -1,6 +1,6 @@
 <?php
 
-/** @var Betanet_HelpDesk_Model_Resource_Setup $installer */
+/** @var Betanet_Helpdesk_Model_Resource_Setup $installer */
 $installer = $this;
 $installer->startSetup();
 $connection = $installer->getConnection();
