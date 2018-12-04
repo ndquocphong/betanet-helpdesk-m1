@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Betanet_HelpDesk>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Betanet_HelpDesk>
+    </modules>
+</config>
