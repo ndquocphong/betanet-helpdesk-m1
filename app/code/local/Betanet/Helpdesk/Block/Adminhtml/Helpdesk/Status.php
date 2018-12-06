@@ -15,7 +15,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Status extends Mage_Adminhtml_Bl
         parent::__construct();
 
         if (!Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/status/save')) {
-            $this->_removeButton('add');
+            $this->removeButton('add');
         }
     }
 }

@@ -14,7 +14,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority extends Mage_Adminhtml_
         parent::__construct();
 
         if (!Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/priority/save')) {
-            $this->_removeButton('add');
+            $this->removeButton('add');
         }
     }
 }

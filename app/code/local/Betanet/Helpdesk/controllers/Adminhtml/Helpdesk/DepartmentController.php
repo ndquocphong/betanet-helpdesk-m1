@@ -9,7 +9,6 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_DepartmentController extends Mage_Admi
      */
     protected function _isAllowed()
     {
-        var_dump($this->getRequest()->getActionName());
         switch ($this->getRequest()->getActionName()) {
             case 'new':
             case 'edit':
