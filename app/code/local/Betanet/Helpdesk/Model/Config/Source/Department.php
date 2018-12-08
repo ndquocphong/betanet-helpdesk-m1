@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_Helpdesk_Model_System_Config_Source_Role
+class Betanet_Helpdesk_Model_Config_Source_Department
 {
     /**
      * @var null|array
@@ -17,12 +17,12 @@ class Betanet_Helpdesk_Model_System_Config_Source_Role
         if (!isset($this->data)) {
             $this->data = [];
             /** @var Mage_Admin_Model_Resource_Role_Collection $collection */
-            $collection = Mage::getModel('admin/role')
+            $collection = Mage::getModel('betanet_helpdesk/department')
                 ->getCollection()
-                ->setRolesFilter();
+                ->addFieldToSelect(['department_id', 'title']);
 
             foreach ($collection->getData() as $role) {
-                $this->data[$role['role_id']] = $role['role_name'];
+                $this->data[$role['department_id']] = $role['title'];
             }
         }
 

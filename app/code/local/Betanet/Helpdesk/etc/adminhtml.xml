@@ -20,6 +20,11 @@
                     <sort_order>30</sort_order>
                     <action>adminhtml/helpdesk_department</action>
                 </department>
+                <ticket translate="title">
+                    <title>Ticket</title>
+                    <sort_order>40</sort_order>
+                    <action>adminhtml/helpdesk_ticket</action>
+                </ticket>
             </children>
         </betanet_helpdesk>
     </menu>
@@ -73,6 +78,20 @@
                                     </delete>
                                 </children>
                             </department>
+                            <ticket translate="title">
+                                <title>Ticket</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>10</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>20</sort_order>
+                                    </delete>
+                                </children>
+                            </ticket>
                         </children>
                     </betanet_helpdesk>
                 </children>

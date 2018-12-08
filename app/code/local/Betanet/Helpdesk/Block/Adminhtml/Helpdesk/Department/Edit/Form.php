@@ -82,7 +82,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Edit_Form extends Mag
             'label' => $this->__('Who can view tickets in that department'),
             'title' => $this->__('Who can view tickets in that department'),
             'required' => true,
-            'values' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toOptionArray()
+            'values' => Mage::getModel('betanet_helpdesk/config_source_role')->toOptionArray()
         ]);
 
         $fieldset->addField('edit_role_id', 'multiselect', [
@@ -90,7 +90,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Edit_Form extends Mag
             'label' => $this->__('Who can edit tickets in that department'),
             'title' => $this->__('Who can edit tickets in that department'),
             'required' => true,
-            'values' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toOptionArray()
+            'values' => Mage::getModel('betanet_helpdesk/config_source_role')->toOptionArray()
         ]);
 
         $fieldset->addField('assign_role_id', 'multiselect', [
@@ -98,7 +98,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Edit_Form extends Mag
             'label' => $this->__('Who can assign tickets in that department'),
             'title' => $this->__('Who can assign tickets in that department'),
             'required' => true,
-            'values' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toOptionArray()
+            'values' => Mage::getModel('betanet_helpdesk/config_source_role')->toOptionArray()
         ]);
 
         $form->setValues($model->getData());

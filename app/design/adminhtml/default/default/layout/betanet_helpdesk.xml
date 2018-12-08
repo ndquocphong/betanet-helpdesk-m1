@@ -54,4 +54,12 @@
             <block type="betanet_helpdesk_adminhtml/helpdesk_department_edit" name="betanet_helpdesk_priority_edit_form_container" />
         </reference>
     </adminhtml_helpdesk_department_edit>
+    <adminhtml_helpdesk_ticket_edit>
+        <reference name="head">
+            <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_ticket_edit" name="betanet_helpdesk_ticket_edit_form_container" />
+        </reference>
+    </adminhtml_helpdesk_ticket_edit>
 </layout>
