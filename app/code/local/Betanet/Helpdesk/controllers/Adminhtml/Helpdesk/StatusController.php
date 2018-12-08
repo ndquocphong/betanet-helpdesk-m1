@@ -13,10 +13,10 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_StatusController extends Mage_Adminhtm
             case 'edit':
             case 'new':
             case 'save':
-                return $this->_getSession()->isAllowed('betanet_helpdesk/status/save');
+                return Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/status/save');
 
             case 'delete':
-                return $this->_getSession()->isAllowed('betanet_helpdesk/status/delete');
+                return Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/status/delete');
 
             default:
                 return parent::_isAllowed();

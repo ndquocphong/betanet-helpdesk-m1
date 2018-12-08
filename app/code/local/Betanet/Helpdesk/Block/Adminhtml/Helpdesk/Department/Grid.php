@@ -81,6 +81,34 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
                 'filter_condition_callback' => [$this, '_filterStoreCondition']
             ]);
         }
+
+        $this->addColumn('view_role_id', [
+            'header' => $this->__('View Role'),
+            'index' => 'view_role_id',
+            'type' => 'options',
+            'options' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toArray(),
+            'sortable' => false,
+            'filter_condition_callback' => [$this, '_filterRoleCondition']
+        ]);
+
+        $this->addColumn('edit_role_id', [
+            'header' => $this->__('Edit Role'),
+            'index' => 'edit_role_id',
+            'type' => 'options',
+            'options' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toArray(),
+            'sortable' => false,
+            'filter_condition_callback' => [$this, '_filterRoleCondition']
+        ]);
+
+        $this->addColumn('assign_role_id', [
+            'header' => $this->__('Assign Role'),
+            'index' => 'assign_role_id',
+            'type' => 'options',
+            'options' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toArray(),
+            'sortable' => false,
+            'filter_condition_callback' => [$this, '_filterRoleCondition']
+        ]);
+
         $this->addColumn('created_at', [
             'header' => strtoupper($this->__('Created At')),
             'index' => 'created_at',
@@ -92,9 +120,9 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
             'type' => 'datetime'
         ]);
 
-        $massActions = [];
+        $actions = [];
         if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/department/save')) {
-            $massActions[] = [
+            $actions[] = [
                 'caption' => $this->__('Edit'),
                 'url' => [
                     'base' => '*/*/edit'
@@ -103,7 +131,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
             ];
         }
         if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/department/delete')) {
-            $massActions[] = [
+            $actions[] = [
                 'caption' => $this->__('Delete'),
                 'url' => [
                     'base' => '*/*/delete',
@@ -119,7 +147,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
             'filter' => false,
             'type' => 'action',
             'getter' => 'getId',
-            'actions' => $massActions,
+            'actions' => $actions,
         ]);
 
         return parent::_prepareColumns();
@@ -175,5 +203,21 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
         }
 
         $this->getCollection()->addStoreFilter($value);
+    }
+
+    /**
+     * Callback which allow filter by role
+     *
+     * @param $collection
+     * @param $column
+     */
+    protected function _filterRoleCondition($collection, $column)
+    {
+        if (!$value = $column->getFilter()->getValue()) {
+            return;
+        }
+
+        $action = str_replace('_role_id', '', $column->getIndex());
+        $this->getCollection()->addRoleFilter($value, $action);
     }
 }

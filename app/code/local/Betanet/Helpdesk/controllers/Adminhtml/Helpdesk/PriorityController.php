@@ -9,14 +9,15 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_PriorityController extends Mage_Adminh
      */
     protected function _isAllowed()
     {
-        switch ($this->getRequest()->getRequestedActionName()) {
+        switch ($this->getRequest()->getActionName()) {
             case 'edit':
             case 'new':
             case 'save':
-                return $this->_getSession()->isAllowed('betanet_helpdesk/priority/save');
+                return Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/priority/save');
 
             case 'delete':
-                return $this->_getSession()->isAllowed('betanet_helpdesk/priority/delete');
+            case 'massDelete':
+                return Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/priority/delete');
 
             default:
                 return parent::_isAllowed();

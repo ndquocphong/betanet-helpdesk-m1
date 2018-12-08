@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Betanet_Helpdesk>
-            <version>1.2.0</version>
+            <version>1.3.0</version>
         </Betanet_Helpdesk>
     </modules>
     <global>
@@ -31,6 +31,9 @@
                     <department_store>
                         <table>betanet_helpdesk_department_store</table>
                     </department_store>
+                    <department_role>
+                        <table>betanet_helpdesk_department_role</table>
+                    </department_role>
                 </entities>
             </betanet_helpdesk_resource>
         </models>
