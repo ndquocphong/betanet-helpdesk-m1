@@ -27,11 +27,10 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
 
     public function indexAction()
     {
-        die(__METHOD__);
         $this->loadLayout();
-        $this->_setActiveMenu('betanet_helpdesk/department');
-        $this->_title($this->__('Help Desk'))->_title($this->__('Department Management'));
-        $this->_addBreadcrumb($this->__('Department Management'), $this->__('Department Management'));
+        $this->_setActiveMenu('betanet_helpdesk/ticket');
+        $this->_title($this->__('Help Desk'))->_title($this->__('Ticket Management'));
+        $this->_addBreadcrumb($this->__('Ticket Management'), $this->__('Ticket Management'));
         $this->renderLayout();
     }
 

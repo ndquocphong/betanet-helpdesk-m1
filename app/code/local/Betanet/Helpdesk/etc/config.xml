@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Betanet_Helpdesk>
-            <version>1.5.0</version>
+            <version>1.6.0</version>
         </Betanet_Helpdesk>
     </modules>
     <global>

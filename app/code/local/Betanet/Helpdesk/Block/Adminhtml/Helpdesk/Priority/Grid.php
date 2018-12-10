@@ -45,7 +45,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority_Grid extends Mage_Admin
             'header' => $this->__('Title'),
             'align' => 'left',
             'index' => 'title',
-            'renderer' => 'betanet_helpdesk_adminhtml/helpdesk_widget_grid_column_renderer_colortext'
+            'frame_callback' => [$this, 'rendererColorCssClass'],
         ]);
 
         $massActions = [];
@@ -100,5 +100,19 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Priority_Grid extends Mage_Admin
         }
 
         return parent::_prepareMassaction();
+    }
+
+    /**
+     * Renderer css class
+     *
+     * @param $renderedValue
+     * @param $row
+     * @param $column
+     * @param $isExport
+     * @return string
+     */
+    public function rendererColorCssClass($renderedValue, $row, $column, $isExport)
+    {
+        return '<div class="priority_id-'.$row->getData('priority_id').'">' . $renderedValue . '</div>';
     }
 }

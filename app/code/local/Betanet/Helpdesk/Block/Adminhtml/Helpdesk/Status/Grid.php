@@ -45,7 +45,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
             'header' => Mage::helper('betanet_helpdesk')->__('Title'),
             'align' => 'left',
             'index' => 'title',
-            'renderer' => 'betanet_helpdesk_adminhtml/helpdesk_widget_grid_column_renderer_colortext'
+            'frame_callback' => [$this, 'rendererColorCssClass'],
         ]);
 
         $massActions = [];
@@ -101,5 +101,19 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Status_Grid extends Mage_Adminht
         }
 
         return parent::_prepareMassaction();
+    }
+
+    /**
+     * Renderer css class
+     *
+     * @param $renderedValue
+     * @param $row
+     * @param $column
+     * @param $isExport
+     * @return string
+     */
+    public function rendererColorCssClass($renderedValue, $row, $column, $isExport)
+    {
+        return '<div class="status_id-'.$row->getData('status_id').'">' . $renderedValue . '</div>';
     }
 }

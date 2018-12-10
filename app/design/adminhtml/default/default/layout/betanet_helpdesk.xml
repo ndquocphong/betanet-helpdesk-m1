@@ -7,6 +7,7 @@
             </action>
         </reference>
         <reference name="content">
+            <block type="adminhtml/template" name="style_status_color" as="style_status_color" template="betanet_helpdesk/css/style_status_color.phtml" />
             <block type="betanet_helpdesk_adminhtml/helpdesk_status" name="betanet_helpdesk_status_grid_container" />
         </reference>
     </adminhtml_helpdesk_status_index>
@@ -26,6 +27,7 @@
             </action>
         </reference>
         <reference name="content">
+            <block type="adminhtml/template" name="style_priority_color" as="style_priority_color" template="betanet_helpdesk/css/style_priority_color.phtml" />
             <block type="betanet_helpdesk_adminhtml/helpdesk_priority" name="betanet_helpdesk_priority_grid_container" />
         </reference>
     </adminhtml_helpdesk_priority_index>
@@ -54,6 +56,16 @@
             <block type="betanet_helpdesk_adminhtml/helpdesk_department_edit" name="betanet_helpdesk_priority_edit_form_container" />
         </reference>
     </adminhtml_helpdesk_department_edit>
+    <adminhtml_helpdesk_ticket_index>
+        <reference name="head">
+            <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="adminhtml/template" name="style_status_color" as="style_status_color" template="betanet_helpdesk/css/style_status_color.phtml" />
+            <block type="adminhtml/template" name="style_priority_color" as="style_priority_color" template="betanet_helpdesk/css/style_priority_color.phtml" />
+            <block type="betanet_helpdesk_adminhtml/helpdesk_ticket" name="betanet_helpdesk_ticket_grid_container" />
+        </reference>
+    </adminhtml_helpdesk_ticket_index>
     <adminhtml_helpdesk_ticket_edit>
         <reference name="head">
             <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>

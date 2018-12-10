@@ -63,7 +63,6 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
 
         $this->addColumn('enabled', [
             'header' => $this->__('Enabled'),
-            'align' => 'text',
             'width' => '50px',
             'index' => 'enabled',
             'type' => 'options',
