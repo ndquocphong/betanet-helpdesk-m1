@@ -20,9 +20,14 @@
                     <sort_order>30</sort_order>
                     <action>adminhtml/helpdesk_department</action>
                 </department>
+                <pic translate="title">
+                    <title>PIC</title>
+                    <sort_order>40</sort_order>
+                    <action>adminhtml/helpdesk_pic</action>
+                </pic>
                 <ticket translate="title">
                     <title>Ticket</title>
-                    <sort_order>40</sort_order>
+                    <sort_order>50</sort_order>
                     <action>adminhtml/helpdesk_ticket</action>
                 </ticket>
             </children>

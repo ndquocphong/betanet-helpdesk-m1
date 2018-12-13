@@ -94,6 +94,14 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Ticket_Edit_Form extends Mage_Ad
             'options' => Mage::getModel('betanet_helpdesk/config_source_department')->toArray()
         ]);
 
+        $fieldset->addField('pic', 'select', [
+            'name' => 'pic',
+            'label' => $this->__('PIC'),
+            'title' => $this->__('PIC'),
+            'required' => true,
+            'options' => Mage::getModel('betanet_helpdesk/config_source_pic')->toArray()
+        ]);
+
         $form->setValues($model->getData());
         $form->setUseContainer(true);
         $this->setForm($form);

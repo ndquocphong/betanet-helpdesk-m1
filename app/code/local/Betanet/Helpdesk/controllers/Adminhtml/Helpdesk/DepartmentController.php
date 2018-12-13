@@ -97,7 +97,6 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_DepartmentController extends Mage_Admi
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         } catch (Exception $e) {
-            echo $e;
             $this->_getSession()->addException($e, $this->__('An error occurred while saving.'));
         }
 
