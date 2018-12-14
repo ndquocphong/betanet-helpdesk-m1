@@ -47,8 +47,12 @@ $ticketTable = $connection->newTable($ticketTableName)
         'nullable' => false,
         'default' => 0
     ])
-    ->addColumn('created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null)
-    ->addColumn('updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null)
+    ->addColumn('created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+        'nullable' => true
+    ])
+    ->addColumn('updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+        'nullable' => true
+    ])
     ->addForeignKey($installer->getFkName($ticketTableName, 'status_id', $statusTableName, 'status_id'), 'status_id', $statusTableName, 'status_id', Varien_Db_Ddl_Table::ACTION_RESTRICT)
     ->addForeignKey($installer->getFkName($ticketTableName, 'priority_id', $priorityTableName, 'priority_id'), 'priority_id', $priorityTableName, 'priority_id', Varien_Db_Ddl_Table::ACTION_RESTRICT)
     ->addForeignKey($installer->getFkName($ticketTableName, 'department_id', $departmentTableName, 'department_id'), 'department_id', $departmentTableName, 'department_id', Varien_Db_Ddl_Table::ACTION_RESTRICT)

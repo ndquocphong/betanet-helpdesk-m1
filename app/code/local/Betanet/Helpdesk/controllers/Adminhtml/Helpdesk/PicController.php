@@ -61,5 +61,11 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_PicController extends Mage_Adminhtml_C
             ->setHttpResponseCode(200)
             ->setBody(Mage::helper('core')->jsonEncode($result));
     }
+
+    public function gridAction()
+    {
+        $this->loadLayout();
+        $this->getResponse()->setBody($this->getLayout()->getBlock('betanet_helpdesk_pic_grid')->toHtml());
+    }
 }
 

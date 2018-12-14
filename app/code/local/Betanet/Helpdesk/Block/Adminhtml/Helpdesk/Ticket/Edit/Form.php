@@ -13,6 +13,20 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Ticket_Edit_Form extends Mage_Ad
         $this->setTitle('Ticket Information');
     }
 
+//    /**
+//     * {@inheritdoc}
+//     *
+//     * @return Mage_Core_Block_Abstract
+//     */
+//    protected function _prepareLayout()
+//    {
+//        if (Mage::) {
+//
+//        }
+//
+//        return parent::_prepareLayout();
+//    }
+
     /**
      * {@inheritdoc}
      *
@@ -47,11 +61,12 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Ticket_Edit_Form extends Mage_Ad
             'required' => true
         ]);
 
-        $fieldset->addField('body', 'textarea', [
+        $fieldset->addField('body', 'editor', [
             'name' => 'body',
             'label' => $this->__('Body'),
             'title' => $this->__('Body'),
             'required' => true,
+            'config' => Mage::getSingleton('cms/wysiwyg_config')->getConfig()
         ]);
 
         $fieldset->addField('customer_name', 'text', [
@@ -94,8 +109,8 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Ticket_Edit_Form extends Mage_Ad
             'options' => Mage::getModel('betanet_helpdesk/config_source_department')->toArray()
         ]);
 
-        $fieldset->addField('pic', 'select', [
-            'name' => 'pic',
+        $fieldset->addField('pic_id', 'select', [
+            'name' => 'pic_id',
             'label' => $this->__('PIC'),
             'title' => $this->__('PIC'),
             'required' => true,

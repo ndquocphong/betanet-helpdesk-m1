@@ -66,6 +66,11 @@
             <block type="betanet_helpdesk_adminhtml/helpdesk_pic_grid" name="betanet_helpdesk_pic_grid" />
         </reference>
     </adminhtml_helpdesk_pic_index>
+    <adminhtml_helpdesk_pic_grid>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_pic_grid" name="betanet_helpdesk_pic_grid" />
+        </reference>
+    </adminhtml_helpdesk_pic_grid>
     <adminhtml_helpdesk_ticket_index>
         <reference name="head">
             <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
@@ -77,7 +82,9 @@
         </reference>
     </adminhtml_helpdesk_ticket_index>
     <adminhtml_helpdesk_ticket_edit>
+        <update handle="editor"/>
         <reference name="head">
+            <action method="setCanLoadTinyMce"><flag>1</flag></action>
             <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
         </reference>
         <reference name="content">

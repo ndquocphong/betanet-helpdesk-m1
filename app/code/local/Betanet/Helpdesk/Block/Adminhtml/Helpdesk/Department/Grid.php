@@ -85,7 +85,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
             'header' => $this->__('View Role'),
             'index' => 'view_role_id',
             'type' => 'options',
-            'options' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toArray(),
+            'options' => Mage::getModel('betanet_helpdesk/config_source_role')->toArray(),
             'sortable' => false,
             'filter_condition_callback' => [$this, '_filterRoleCondition']
         ]);
@@ -94,7 +94,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
             'header' => $this->__('Edit Role'),
             'index' => 'edit_role_id',
             'type' => 'options',
-            'options' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toArray(),
+            'options' => Mage::getModel('betanet_helpdesk/config_source_role')->toArray(),
             'sortable' => false,
             'filter_condition_callback' => [$this, '_filterRoleCondition']
         ]);
@@ -103,7 +103,7 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Department_Grid extends Mage_Adm
             'header' => $this->__('Assign Role'),
             'index' => 'assign_role_id',
             'type' => 'options',
-            'options' => Mage::getModel('betanet_helpdesk/system_config_source_role')->toArray(),
+            'options' => Mage::getModel('betanet_helpdesk/config_source_role')->toArray(),
             'sortable' => false,
             'filter_condition_callback' => [$this, '_filterRoleCondition']
         ]);

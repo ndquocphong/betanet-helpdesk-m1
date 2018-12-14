@@ -13,8 +13,6 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
             case 'new':
             case 'edit':
             case 'save':
-            case 'massEnable':
-            case 'massDisable':
                 return Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/ticket/save');
 
             case 'delete':
@@ -83,7 +81,7 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
         }
 
         $model->setData($data);
-        $model->setData('user_id', Mage::helper('adminhtml')->getCurrentUserId());
+        $model->setData('created_by', Mage::helper('adminhtml')->getCurrentUserId());
         $this->_getSession()->setFormData($data);
 
         try {
@@ -107,13 +105,12 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
 
     public function deleteAction()
     {
-        die(__METHOD__);
-        $id = $this->getRequest()->getParam('department_id');
+        $id = $this->getRequest()->getParam('ticket_id');
         if (!$this->getRequest()->isPost() || !$id) {
             return $this->_redirect('*/*/');
         }
 
-        $model = Mage::getModel('betanet_helpdesk/department');
+        $model = Mage::getModel('betanet_helpdesk/ticket');
         $model->load($id);
         if (!$model->getId()) {
             $this->_getSession()->addError($this->__('The selected [%s] does not exist.', $id));
@@ -135,15 +132,14 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
 
     public function massDeleteAction()
     {
-        die(__METHOD__);
         if (!$this->getRequest()->isPost()) {
             return $this->_redirect('*/*/');
         }
 
         $success = [];
-        $ids = $this->getRequest()->getParam('department_ids');
+        $ids = $this->getRequest()->getParam('ticket_ids');
         foreach ($ids as $id) {
-            $model = Mage::getModel('betanet_helpdesk/department');
+            $model = Mage::getModel('betanet_helpdesk/ticket');
             $model->load($id);
             if (!$model->getId()) {
                 $this->_getSession()->addError($this->__('The selected [%s] does not exist.', $id));
@@ -162,76 +158,6 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
 
         if ($success) {
             $this->_getSession()->addSuccess($this->__('%s of %s have been deleted successfully.', count($success), count($ids)));
-        }
-
-        return $this->_redirect('*/*/');
-    }
-
-    public function massEnableAction()
-    {
-        die(__METHOD__);
-        if (!$this->getRequest()->isPost()) {
-            return $this->_redirect('*/*/');
-        }
-
-        $success = [];
-        $ids = $this->getRequest()->getParam('department_ids');
-        foreach ($ids as $id) {
-            $model = Mage::getModel('betanet_helpdesk/department');
-            $model->load($id);
-            if (!$model->getId()) {
-                $this->_getSession()->addError($this->__('The selected [%s] does not exist.', $id));
-                return $this->_redirect('*/*');
-            }
-
-            try {
-                $model->setData('enabled', 1);
-                $model->save();
-                $success[] = $id;
-            } catch (Mage_Core_Exception $e) {
-                $this->_getSession()->addError($e->getMessage());
-            } catch (\Exception $e) {
-                $this->_getSession()->addException($e, $this->__('An error occurred while enabling the selected.'));
-            }
-        }
-
-        if ($success) {
-            $this->_getSession()->addSuccess($this->__('%s of %s have been enabled successfully.', count($success), count($ids)));
-        }
-
-        return $this->_redirect('*/*/');
-    }
-
-    public function massDisableAction()
-    {
-        die(__METHOD__);
-        if (!$this->getRequest()->isPost()) {
-            return $this->_redirect('*/*/');
-        }
-
-        $success = [];
-        $ids = $this->getRequest()->getParam('department_ids');
-        foreach ($ids as $id) {
-            $model = Mage::getModel('betanet_helpdesk/department');
-            $model->load($id);
-            if (!$model->getId()) {
-                $this->_getSession()->addError($this->__('The selected [%s] does not exist.', $id));
-                return $this->_redirect('*/*');
-            }
-
-            try {
-                $model->setData('enabled', 0);
-                $model->save();
-                $success[] = $id;
-            } catch (Mage_Core_Exception $e) {
-                $this->_getSession()->addError($e->getMessage());
-            } catch (\Exception $e) {
-                $this->_getSession()->addException($e, $this->__('An error occurred while disabling the selected.'));
-            }
-        }
-
-        if ($success) {
-            $this->_getSession()->addSuccess($this->__('%s of %s have been disabled successfully.', count($success), count($ids)));
         }
 
         return $this->_redirect('*/*/');

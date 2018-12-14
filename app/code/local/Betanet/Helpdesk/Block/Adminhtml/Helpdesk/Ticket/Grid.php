@@ -139,22 +139,6 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Ticket_Grid extends Mage_Adminht
         $this->setMassactionIdField('ticket_id');
         $this->getMassactionBlock()->setFormFieldName('ticket_ids');
 
-        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/ticket/save')) {
-            $this->getMassactionBlock()->addItem('enable', [
-                'label' => $this->__('Enable'),
-                'url' => $this->getUrl('*/*/massEnable'),
-                'confirm' => $this->__('Are you sure you want to do this?')
-            ]);
-        }
-
-        if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/ticket/save')) {
-            $this->getMassactionBlock()->addItem('disable', [
-                'label' => $this->__('Disable'),
-                'url' => $this->getUrl('*/*/massDisable'),
-                'confirm' => $this->__('Are you sure you want to do this?')
-            ]);
-        }
-
         if (Mage::getSingleton('admin/session')->isAllowed('betanet_helpdesk/ticket/delete')) {
             $this->getMassactionBlock()->addItem('delete', [
                 'label' => $this->__('Delete'),

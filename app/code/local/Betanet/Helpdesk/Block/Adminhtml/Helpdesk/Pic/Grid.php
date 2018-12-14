@@ -39,13 +39,48 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Pic_Grid extends Mage_Adminhtml_
             'index' => 'is_pic',
             'field_name' => 'is_pic',
             'value' => '0',
+            'filter_condition_callback' => [$this, '_filterIsPic']
         ], 'is_active');
 
         return $result;
     }
 
+    /**
+     * Filter is_pic callback
+     *
+     * @param $collection
+     * @param $column
+     */
+    protected function _filterIsPic($collection, $column)
+    {
+        $value = $column->getFilter()->getValue();
+
+        if ($value === '1') {
+            $this->getCollection()->getSelect()->where('pic_table.user_id IS NOT NULL');
+        } else if ($value === '0') {
+            $this->getCollection()->getSelect()->where('pic_table.user_id IS NULL');
+        }
+
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
     public function getGridUrl()
     {
-        return $this->getUrl('adminhtml/permissions_user/roleGrid', array());
+        return $this->getUrl('adminhtml/helpdesk_pic/grid', array());
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param $row
+     * @return bool|string
+     */
+    public function getRowUrl($row)
+    {
+        return false;
     }
 }

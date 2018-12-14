@@ -16,15 +16,22 @@ class Betanet_Helpdesk_Model_Config_Source_Pic
     {
         if (!isset($this->data)) {
             $this->data = [
-                null => Mage::helper('betanet_helpdesk')->__('Unassigned')
+                '-1' => Mage::helper('betanet_helpdesk')->__('Unassigned')
             ];
             /** @var Mage_Admin_Model_Resource_Role_Collection $collection */
             $collection = Mage::getModel('admin/user')
                 ->getCollection()
                 ->addFieldToSelect(['user_id', 'username']);
+            $collection->getSelect()
+                ->joinLeft(
+                    ['pic_table' => $collection->getTable('betanet_helpdesk/pic')],
+                    'pic_table.user_id = main_table.user_id',
+                    ['pic_id']
+                )
+                ->where('pic_table.user_id IS NOT NULL');
 
             foreach ($collection->getData() as $role) {
-                $this->data[$role['user_id']] = $role['username'];
+                $this->data[$role['pic_id']] = $role['username'];
             }
         }
 
