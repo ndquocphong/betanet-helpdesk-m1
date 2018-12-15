@@ -1,0 +1,36 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Help Desk | Ticket History') ?></h1>
+</div>
+<?php if ($this->getTicketCollection()->getSize()): ?>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Ticket #') ?></th>
+            <th><?php echo $this->__('Date') ?></th>
+            <th><?php echo $this->__('Title') ?></th>
+            <th><?php echo $this->__('Department') ?></th>
+            <th><?php echo $this->__('Status') ?></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->getTicketCollection() as $ticket): ?>
+            <tr>
+                <td><?php echo $ticket->getId() ?></td>
+                <td><?php echo $this->formatDate($ticket->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_SHORT, true) ?></td>
+                <td><?php echo $this->escapeHtml($ticket->getTitle()) ?></td>
+                <td><?php echo $this->escapeHtml($ticket->getDepartment()->getTitle()) ?></td>
+                <td><div class="status_id-<?php echo $ticket->getStatus()->getId()?>"><?php echo $ticket->getStatus()->getTitle() ?></div></td>
+                <td class="a-center">
+                    <span class="nobr"><a href="<?php echo $this->getViewUrl($ticket) ?>"><?php echo $this->__('View') ?></a></span>
+                </td>
+            </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
+<div>
+    <?php echo $this->getChildHtml('pager') ?>
+</div>
+<?php else: ?>
+    <p><?php echo $this->__('You have submitted no tickets.'); ?></p>
+<?php endif; ?>

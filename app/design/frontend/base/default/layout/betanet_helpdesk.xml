@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<layout>
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="title label">
+                <label>Help Desk - Submit ticket</label>
+                <url>helpdesk/ticket/submit</url>
+                <title>Help Desk - Submit ticket</title>
+                <prepare>true</prepare>
+            </action>
+        </reference>
+    </default>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="betanet_helpdesk">
+                <name>betanet_helpdesk_ticket</name>
+                <path>helpdesk/ticket</path>
+                <label>Helpdesk - Ticket</label>
+            </action>
+        </reference>
+    </customer_account>
+    <betanet_helpdesk_ticket_index>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="core/template" name="style_status_color" as="style_status_color" template="betanet_helpdesk/css/style_status_color.phtml" />
+            <block type="betanet_helpdesk/ticket_history" name="betanet_helpdesk_ticket_history" />
+        </reference>
+    </betanet_helpdesk_ticket_index>
+    <betanet_helpdesk_ticket_submit>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="betanet_helpdesk/ticket_submit" name="betanet_helpdesk_ticket_submit" />
+        </reference>
+    </betanet_helpdesk_ticket_submit>
+    <betanet_helpdesk_ticket_view>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="core/template" name="style_status_color" as="style_status_color" template="betanet_helpdesk/css/style_status_color.phtml" />
+            <block type="betanet_helpdesk/ticket_view" name="betanet_helpdesk_ticket_view" />
+        </reference>
+    </betanet_helpdesk_ticket_view>
+</layout>

@@ -1,0 +1,25 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Help Desk | Ticket #%s: %s', $this->getTicket()->getId(), $this->getTicket()->getTitle()) ?>
+        <span style="font-size: 50%" class="status_id-<?php echo $this->getTicket()->getStatus()->getId() ?>"><?php echo $this->getTicket()->getStatus()->getTitle() ?></span>
+    </h1>
+</div>
+<div class="col2-set">
+    <div class="col-1">
+        <h4><?php echo $this->__('Customer Name') ?></h4>
+        <p><?php echo $this->helper('core')->escapeHtml($this->getTicket()->getCustomerName()) ?></p>
+    </div>
+    <div class="col-2">
+        <h4><?php echo $this->__('Customer Email') ?></h4>
+        <p><?php echo $this->helper('core')->escapeHtml($this->getTicket()->getCustomerEmail()) ?></p>
+    </div>
+</div>
+<div class="col2-set">
+    <div class="col-1">
+        <h4><?php echo $this->__('Department') ?></h4>
+        <p><?php echo $this->helper('core')->escapeHtml($this->getTicket()->getDepartment()->getTitle()) ?></p>
+    </div>
+    <div class="col-2">
+        <h4><?php echo $this->__('Dates') ?></h4>
+        <p><?php echo $this->formatDate($this->getTicket()->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_SHORT, true) ?></p>
+    </div>
+</div>

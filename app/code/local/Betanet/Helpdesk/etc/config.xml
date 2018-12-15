@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Betanet_Helpdesk>
-            <version>1.8.0</version>
+            <version>1.9.0</version>
         </Betanet_Helpdesk>
     </modules>
     <global>
@@ -52,11 +52,32 @@
             </betanet_helpdesk_setup>
         </resources>
         <blocks>
+            <betanet_helpdesk>
+                <class>Betanet_Helpdesk_Block</class>
+            </betanet_helpdesk>
             <betanet_helpdesk_adminhtml>
                 <class>Betanet_Helpdesk_Block_Adminhtml</class>
             </betanet_helpdesk_adminhtml>
         </blocks>
     </global>
+    <frontend>
+        <routers>
+            <betanet_helpdesk>
+                <use>standard</use>
+                <args>
+                    <module>Betanet_Helpdesk</module>
+                    <frontName>helpdesk</frontName>
+                </args>
+            </betanet_helpdesk>
+        </routers>
+        <layout>
+            <updates>
+                <betanet_helpdesk>
+                    <file>betanet_helpdesk.xml</file>
+                </betanet_helpdesk>
+            </updates>
+        </layout>
+    </frontend>
     <admin>
         <routers>
             <adminhtml>

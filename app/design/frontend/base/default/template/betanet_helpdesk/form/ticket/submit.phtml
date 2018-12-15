@@ -1,0 +1,52 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Help Desk | Submit new ticket') ?></h1>
+</div>
+<form action="<?php echo $this->getFormAction() ?>" method="post" id="ticketSubmitForm">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+    <div class="fieldset">
+        <h2><?php echo $this->__('Ticket Information') ?></h2>
+        <ul class="form-list">
+            <li class="field">
+                <label for="customer_name" class="required"><em>*</em><?php echo $this->__('Name') ?></label>
+                <div class="input-box">
+                    <input type="text" name="customer_name" id="name" class="input-text required-entry" title="<?php echo $this->helper('core')->quoteEscape($this->__('Name')) ?>" value="<?php echo $ticket->getData('customer_name');  ?>" />
+                </div>
+            </li>
+            <li class="field">
+                <label for="customer_email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                <div class="input-box">
+                    <input type="text" name="customer_email" id="email" class="input-text required-entry validate-email" title="<?php echo $this->helper('core')->quoteEscape($this->__('Email')) ?>" value="<?php echo $ticket->getData('customer_email');  ?>" />
+                </div>
+            </li>
+            <li class="field">
+                <label for="department_id" class="required" title="<?php echo $this->helper('core')->quoteEscape($this->__('Department')) ?>"><?php echo $this->__('Department') ?></label>
+                <div class="select-box">
+                    <select name="department_id" class="required-entry">
+                        <?php foreach ($this->getDepartmentOptions() as $id => $title): ?>
+                        <option value="<?php echo $id ?>" <?php echo $id === $ticket->getData('department_id') ? 'selected': '' ?>><?php echo $title ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </li>
+            <li class="field">
+                <label for="title" class="required"><em>*</em><?php echo $this->__('Title') ?></label>
+                <div class="input-box">
+                    <input type="text" name="title" id="title" class="input-text required-entry" title="<?php echo $this->helper('core')->quoteEscape($this->__('Title')) ?>" value="<?php echo $ticket->getData('title');  ?>" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="body" class="required"><em>*</em><?php echo $this->__('Body') ?></label>
+                <div class="input-box">
+                    <textarea name="body" id="body" class="input-text required-entry" title="<?php echo $this->helper('core')->quoteEscape($this->__('Body')) ?>" cols="5" rows="3"><?php echo $ticket->getData('body'); ?></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="button-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="submit" class="button" title="<?php echo $this->helper('core')->quoteEscape($this->__('Submit')) ?>"><?php echo $this->__('Submit') ?></button>
+    </div>
+</form>
+<script type="text/javascript">
+    var ticketSubmitForm = new VarienForm('ticketSubmitForm', true);
+</script>
