@@ -64,7 +64,6 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
             : $this->__('Create new Ticket');
         $this->_title($title);
         $this->_addBreadcrumb($title, $title);
-
         $this->renderLayout();
     }
 
@@ -89,7 +88,11 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
             $this->_getSession()->setFormData(false);
             $this->_getSession()->addSuccess($this->__('The saving have been executed successfully.'));
             if ($this->getRequest()->getParam('back') === 'edit') {
-                return $this->_redirect('*/*/edit', ['ticket_id' => $model->getId()]);
+                $backParams = ['ticket_id' => $model->getId()];
+                if ($this->getRequest()->getParam('active_tab')) {
+                    $backParams['active_tab'] = $this->getRequest()->getParam('active_tab');
+                }
+                return $this->_redirect('*/*/edit', $backParams);
             }
 
             return $this->_redirect('*/*/');

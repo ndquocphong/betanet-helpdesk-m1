@@ -15,4 +15,47 @@ class Betanet_Helpdesk_Block_Ticket_View extends Mage_Core_Block_Template
         parent::_construct();
     }
 
+    /**
+     * Get ticket model
+     *
+     * @return Betanet_Helpdesk_Model_Ticket
+     */
+    public function getTicket()
+    {
+        if ($this->hasData('ticket')) {
+            return $this->getData('ticket');
+        }
+
+        $this->setData('ticket', Mage::registry('betanet_helpdesk/ticket'));
+
+        return $this->getData('ticket');
+    }
+
+    /**
+     * Get reply collection
+     *
+     * @return Betanet_Helpdesk_Model_Resource_Reply_Collection
+     */
+    public function getReplyCollection()
+    {
+        if ($this->hasData('reply_collection')) {
+            return $this->getData('reply_collection');
+        }
+
+        $collection = Mage::getModel('betanet_helpdesk/reply')->getCollection()
+            ->addFieldToFilter('ticket_id', $this->getTicket()->getId());
+        $this->setData('reply_collection', $collection);
+
+        return $this->getData('reply_collection');
+    }
+
+    /**
+     * Get current customer id
+     *
+     * @return int
+     */
+    public function getCurrentCustomerId()
+    {
+        return Mage::getSingleton('customer/session')->getCustomerId();
+    }
 }

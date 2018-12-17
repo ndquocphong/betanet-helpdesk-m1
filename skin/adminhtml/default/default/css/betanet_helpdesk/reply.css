@@ -1,0 +1,58 @@
+.reply-blockquote-right {
+    position: relative;
+    padding: 15px 30px;
+    margin: 0 0 0 50px;
+    color: #000;
+    background: #fff9e9 27px 5px no-repeat;
+    border: 1px solid #eee2be;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.reply-blockquote-right:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    border-width: 0 0 20px 20px;
+    border-style: solid;
+    border-color: transparent #eee2be;
+    display: block;
+    width: 0;
+}
+
+.reply-blockquote-left {
+    position: relative;
+    padding: 15px 30px;
+    margin: 0 50px 0 0;
+    border: 1px solid #95a486 !important;
+    color: #3d6611 !important;
+    background: #eff5ea no-repeat 10px 10px !important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.reply-blockquote-left:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    border-width: 0 20px 20px 0px;
+    border-style: solid;
+    border-color: transparent #95a486;
+    display: block;
+    width: 0;
+}
+
+.reply-blockquote-right + .reply-blockquote-author {
+    text-align: right;
+    margin: 5px 50px 2em 0;
+    font-style: italic;
+}
+
+.reply-blockquote-left + .reply-blockquote-author {
+    margin: 5px 0 2em 50px;
+    font-style: italic;
+}

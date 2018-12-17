@@ -1,0 +1,47 @@
+<div class="replies-container">
+    <div class="replies-conversation-container entry-edit">
+        <div class="entry-edit-head"><h4><?php echo $this->__('Conversation') ?></h4></div>
+        <fieldset class="replies-conversation" id="replies-conversation">
+            <div class="reply" style="margin-bottom: 10px">
+                <blockquote class="reply-blockquote-left">
+                    <?php echo $this->escapeHtml($ticket->getBody()); ?>
+                </blockquote>
+                <p class="reply-blockquote-author">
+                    <?php echo $ticket->getCustomerName(); ?>
+                    | <?php echo $this->formatDate($ticket->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_SHORT, true) ?>
+                    | <span class="status_id-<?php echo $ticket->getStatus()->getId() ?>"><?php echo $this->escapeHtml($ticket->getStatus()->getTitle()) ?></span>
+                </p>
+            </div>
+            <?php foreach ($replyCollection as $reply): ?>
+                <div class="reply" style="margin-bottom: 10px">
+                    <blockquote class="<?php echo $reply->getCustomerId() == $currentCustomerId ? 'reply-blockquote-right' : 'reply-blockquote-left' ?>">
+                        <?php echo $this->escapeHtml($reply->getMessage()); ?>
+                    </blockquote>
+                    <p class="reply-blockquote-author">
+                        <?php echo $reply->getAuthorFullName() ?>
+                        | <?php echo $this->formatDate($reply->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_SHORT, true) ?>
+                        | <span class="status_id-<?php echo $reply->getStatus()->getId() ?>"><?php echo $this->escapeHtml($reply->getStatus()->getTitle()) ?></span>
+                    </p>
+                </div>
+            <?php endforeach; ?>
+        </fieldset>
+    </div>
+    <div class="replies-submit entry-edit">
+        <div class="entry-edit-head"><h4><?php echo $this->__('Reply') ?></h4></div>
+        <fieldset>
+            <table style="width: 100%;">
+                <tr>
+                    <td><textarea id="reply_message" style="width: 100%; max-width: 100%; margin-bottom: 5px" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="a-right">
+                        <input type="hidden" id="reply_ticket_id" value="<?php echo $ticket->getId() ?>" />
+                        <input type="hidden" id="reply_customer_id" value="<?php echo $currentCustomerId ?>" />
+                        <input type="hidden" id="reply_submit_url" value="<?php echo $this->getUrl('helpdesk/reply/submit') ?>" />
+                        <button type="button" id="reply_submit" class="button"><?php echo $this->__('Submit') ?></button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>

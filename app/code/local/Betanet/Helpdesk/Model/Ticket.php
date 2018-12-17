@@ -41,4 +41,46 @@ class Betanet_Helpdesk_Model_Ticket extends Mage_Core_Model_Abstract
 
         return $this->getData('status');
     }
+
+    /**
+     * Get customer model
+     *
+     * @return Mage_Customer_Model_Entity_Customer|bool
+     */
+    public function getCustomer()
+    {
+        if ($this->hasData('customer')) {
+            return $this->getData('customer');
+        }
+
+        $customer = Mage::getModel('customer/entity')->load($this->getCustomerId());
+        if ($customer->getId()) {
+            $this->setData('customer', $customer);
+        } else {
+            $this->setData('customer', false);
+        }
+
+        return $this->getData('customer');
+    }
+
+    /**
+     * Get user model
+     *
+     * @return Mage_Admin_Model_User|bool
+     */
+    public function getCreatedUser()
+    {
+        if ($this->hasData('created_user')) {
+            return $this->getData('created_user');
+        }
+
+        $user = Mage::getModel('admin/user')->load($this->getCreatedBy());
+        if ($user->getId()) {
+            $this->setData('created_user', $user);
+        } else {
+            $this->setData('created_user', false);
+        }
+
+        return $this->getData('created_user');
+    }
 }

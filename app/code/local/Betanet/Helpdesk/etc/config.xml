@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Betanet_Helpdesk>
-            <version>1.9.0</version>
+            <version>1.10.0</version>
         </Betanet_Helpdesk>
     </modules>
     <global>
@@ -40,6 +40,9 @@
                     <ticket>
                         <table>betanet_helpdesk_ticket</table>
                     </ticket>
+                    <reply>
+                        <table>betanet_helpdesk_reply</table>
+                    </reply>
                 </entities>
             </betanet_helpdesk_resource>
         </models>

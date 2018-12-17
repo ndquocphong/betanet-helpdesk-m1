@@ -19,9 +19,16 @@ class Betanet_Helpdesk_Block_Adminhtml_Helpdesk_Ticket_Edit extends Mage_Adminht
             'class' => 'save',
         ], -100);
 
+
+        $tabJsObjName = Mage::getBlockSingleton('betanet_helpdesk_adminhtml/helpdesk_ticket_edit_tabs')->getJsObjectName();
+
         $this->_formScripts[] = "
             function saveAndContinueEdit(){
-                editForm.submit($('edit_form').action+'back/edit/');
+                if (typeof {$tabJsObjName} === undefined) {
+                    editForm.submit($('edit_form').action+'back/edit/');
+                } else {
+                    editForm.submit($('edit_form').action+'active_tab/'+{$tabJsObjName}.activeTab.name+'/back/edit/');
+                }
             }
         ";
     }

@@ -23,3 +23,10 @@
         <p><?php echo $this->formatDate($this->getTicket()->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_SHORT, true) ?></p>
     </div>
 </div>
+
+<?php
+    $this->getChild('betanet_helpdesk_ticket_view_replies')->assign('replyCollection', $this->getReplyCollection());
+    $this->getChild('betanet_helpdesk_ticket_view_replies')->assign('ticket', $this->getTicket());
+    $this->getChild('betanet_helpdesk_ticket_view_replies')->assign('currentCustomerId', $this->getCurrentCustomerId());
+?>
+<?php echo $this->getChildHtml('betanet_helpdesk_ticket_view_replies') ?>
