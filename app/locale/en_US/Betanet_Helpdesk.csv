@@ -1,0 +1,6 @@
+"title_betanet_helpdesk/event_newTicketCustomerEvent","New ticket from customer"
+"title_betanet_helpdesk/event_newTicketPicEvent","New ticket from PIC"
+"title_betanet_helpdesk/event_newReplyCustomerEvent","New reply from customer"
+"title_betanet_helpdesk/event_newReplyPicEvent","New reply from customer"
+"title_betanet_helpdesk/event_ticketChangedEvent","Ticket was assigned to another PIC"
+"title_betanet_helpdesk/event_recurringEvent","Recurring tasks"

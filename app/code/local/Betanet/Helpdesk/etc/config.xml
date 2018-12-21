@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Betanet_Helpdesk>
-            <version>1.10.0</version>
+            <version>1.11.0</version>
         </Betanet_Helpdesk>
     </modules>
     <global>
@@ -43,6 +43,15 @@
                     <reply>
                         <table>betanet_helpdesk_reply</table>
                     </reply>
+                    <workflow>
+                        <table>betanet_helpdesk_workflow</table>
+                    </workflow>
+                    <workflow_condition>
+                        <table>betanet_helpdesk_workflow_condition</table>
+                    </workflow_condition>
+                    <workflow_action>
+                        <table>betanet_helpdesk_workflow_action</table>
+                    </workflow_action>
                 </entities>
             </betanet_helpdesk_resource>
         </models>
@@ -64,6 +73,15 @@
         </blocks>
     </global>
     <frontend>
+        <translate>
+            <modules>
+                <Betanet_Helpdesk>
+                    <files>
+                        <default>Betanet_Helpdesk.csv</default>
+                    </files>
+                </Betanet_Helpdesk>
+            </modules>
+        </translate>
         <routers>
             <betanet_helpdesk>
                 <use>standard</use>
@@ -93,6 +111,15 @@
         </routers>
     </admin>
     <adminhtml>
+        <translate>
+            <modules>
+                <Betanet_Helpdesk>
+                    <files>
+                        <default>Betanet_Helpdesk.csv</default>
+                    </files>
+                </Betanet_Helpdesk>
+            </modules>
+        </translate>
         <layout>
             <updates>
                 <betanet_helpdesk>

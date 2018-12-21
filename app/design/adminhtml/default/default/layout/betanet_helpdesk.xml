@@ -102,4 +102,12 @@
             </block>
         </reference>
     </adminhtml_helpdesk_ticket_edit>
+    <adminhtml_helpdesk_workflow_edit>
+        <reference name="head">
+            <action method="addJs"><script>betanet_helpdesk/tools.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="betanet_helpdesk_adminhtml/helpdesk_workflow_edit" name="betanet_helpdesk_workflow_edit_form_container" />
+        </reference>
+    </adminhtml_helpdesk_workflow_edit>
 </layout>

@@ -47,7 +47,7 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                $this->_getSession()->addError($this->__('The Ticket which title [%s] does not exist.', $id));
+                $this->_getSession()->addError($this->__('The Ticket which id [%s] does not exist.', $id));
                 return $this->_redirect('*/*');
             }
         }

@@ -1,0 +1,5 @@
+<?php
+
+abstract class Betanet_Helpdesk_Model_AbstractCondition extends Varien_Object implements Betanet_Helpdesk_Model_ConditionInterface
+{
+}
