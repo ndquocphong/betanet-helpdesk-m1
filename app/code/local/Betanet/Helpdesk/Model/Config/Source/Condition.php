@@ -1,6 +1,6 @@
 <?php
 
-class Betanet_Helpdesk_Model_Config_Source_Event
+class Betanet_Helpdesk_Model_Config_Source_Condition
 {
     /**
      * @var null|array
@@ -15,9 +15,9 @@ class Betanet_Helpdesk_Model_Config_Source_Event
     public function toArray()
     {
         if (!isset($this->data)) {
-            $collection = Mage::getModel('betanet_helpdesk/event_collection');
-            foreach ($collection->getData() as $event) {
-                $this->data[$event->getId()] = Mage::helper('core')->__('title_' . $event->getId());
+            $collection = Mage::getModel('betanet_helpdesk/condition_collection');
+            foreach ($collection->getData() as $condition) {
+                $this->data[$condition->getId()] = Mage::helper('core')->__('title_' . $condition->getId());
             }
         }
 

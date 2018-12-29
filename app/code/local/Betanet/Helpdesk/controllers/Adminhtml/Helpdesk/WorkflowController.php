@@ -25,7 +25,6 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_WorkflowController extends Mage_Adminh
 
     public function indexAction()
     {
-        die(__METHOD__);
         $this->loadLayout();
         $this->_setActiveMenu('betanet_helpdesk/workflow');
         $this->_title($this->__('Help Desk'))->_title($this->__('Workflow Management'));
@@ -72,15 +71,14 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_WorkflowController extends Mage_Adminh
 
     public function saveAction()
     {
-        die(__METHOD__);
         $data = $this->getRequest()->getPost();
         if (!$data) {
             return $this->_redirect('*/*/');
         }
 
-        $model = Mage::getModel('betanet_helpdesk/status');
-        if (!empty($data['status_id'])) {
-            $model->load($data['status_id']);
+        $model = Mage::getModel('betanet_helpdesk/workflow');
+        if (!empty($data['workflow_id'])) {
+            $model->load($data['workflow_id']);
         }
 
         $model->setData($data);
@@ -88,14 +86,16 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_WorkflowController extends Mage_Adminh
 
         try {
             $model->save();
+            
             $this->_getSession()->setFormData(false);
-            $this->_getSession()->addSuccess($this->__('The Status have been saved successfully.'));
+            $this->_getSession()->addSuccess($this->__('The saving have been executed successfully.'));
             if ($this->getRequest()->getParam('back') === 'edit') {
-                return $this->_redirect('*/*/edit', ['status_id' => $model->getId()]);
+                return $this->_redirect('*/*/edit', ['workflow_id' => $model->getId()]);
             }
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         } catch (\Exception $e) {
+            echo $e;
             $this->_getSession()->addException($e, $this->__('An error occurred while saving the status.'));
         }
 
@@ -104,27 +104,26 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_WorkflowController extends Mage_Adminh
 
     public function deleteAction()
     {
-        die(__METHOD__);
-        $id = $this->getRequest()->getParam('status_id');
+        $id = $this->getRequest()->getParam('workflow_id');
         if (!$this->getRequest()->isPost() || !$id) {
             return $this->_redirect('*/*/');
         }
 
-        $model = Mage::getModel('betanet_helpdesk/status');
+        $model = Mage::getModel('betanet_helpdesk/workflow');
         $model->load($id);
         if (!$model->getId()) {
-            $this->_getSession()->addError($this->__('The Status [%s] does not exist.', $id));
+            $this->_getSession()->addError($this->__('The selected [%s] does not exist.', $id));
             return $this->_redirect('*/*');
         }
 
         try {
             $title = $model->getTitle();
             $model->delete();
-            $this->_getSession()->addSuccess($this->__('The Status [%s] have been deleted successfully.', $title));
+            $this->_getSession()->addSuccess($this->__('The selected [%s] have been deleted successfully.', $title));
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         } catch (\Exception $e) {
-            $this->_getSession()->addException($e, $this->__('An error occurred while deleting the status.'));
+            $this->_getSession()->addException($e, $this->__('An error occurred while deleting the selected.'));
         }
 
         return $this->_redirect('*/*/');
@@ -132,18 +131,17 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_WorkflowController extends Mage_Adminh
 
     public function massDeleteAction()
     {
-        die(__METHOD__);
         if (!$this->getRequest()->isPost()) {
             return $this->_redirect('*/*/');
         }
 
         $success = [];
-        $statusIds = $this->getRequest()->getParam('status_ids');
+        $statusIds = $this->getRequest()->getParam('workflow_ids');
         foreach ($statusIds as $statusId) {
-            $model = Mage::getModel('betanet_helpdesk/status');
+            $model = Mage::getModel('betanet_helpdesk/workflow');
             $model->load($statusId);
             if (!$model->getId()) {
-                $this->_getSession()->addError($this->__('The Status [%s] does not exist.', $statusId));
+                $this->_getSession()->addError($this->__('The selected [%s] does not exist.', $statusId));
                 return $this->_redirect('*/*');
             }
 

@@ -1,26 +1,27 @@
 <?php
 
-class Betanet_Helpdesk_Model_Event_Collection
+class Betanet_Helpdesk_Model_Action_Collection
 {
     /**
-     * Get events
+     * Get collection
      *
-     * @return Betanet_Helpdesk_Model_EventInterface[]
+     * @return Betanet_Helpdesk_Model_ActionInterface[]
      */
     public function getData()
     {
-        $events = [
-            new Betanet_Helpdesk_Model_Event_NewTicketCustomerEvent(),
-            new Betanet_Helpdesk_Model_Event_NewTicketPicEvent(),
-            new Betanet_Helpdesk_Model_Event_NewReplyCustomerEvent(),
-            new Betanet_Helpdesk_Model_Event_NewReplyPicEvent(),
-            new Betanet_Helpdesk_Model_Event_TicketChangedPicEvent(),
-            new Betanet_Helpdesk_Model_Event_RecurringEvent()
+        $items = [
+            new Betanet_Helpdesk_Model_Action_SendEmailPicAction(),
+            new Betanet_Helpdesk_Model_Action_SendEmailAction(),
+            new Betanet_Helpdesk_Model_Action_SendEmailCustomerAction(),
+            new Betanet_Helpdesk_Model_Action_ChangeDepartmentAction(),
+            new Betanet_Helpdesk_Model_Action_ChangePicAction(),
+            new Betanet_Helpdesk_Model_Action_ChangePriorityAction(),
+            new Betanet_Helpdesk_Model_Action_ChangeStatusAction(),
         ];
 
         $collection = [];
-        foreach ($events as $event) {
-            $collection[$event->getId()] = $event;
+        foreach ($items as $item) {
+            $collection[$item->getId()] = $item;
         }
 
         return $collection;

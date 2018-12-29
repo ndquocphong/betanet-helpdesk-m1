@@ -40,11 +40,15 @@ $workflowTable = $connection->newTable($workflowTableName)
 $connection->createTable($workflowTable);
 
 $workflowConditionTable = $connection->newTable($workflowConditionTableName)
-    ->addColumn('workflow_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
+    ->addColumn('id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
         'unsigned' => true,
         'nullable' => false,
         'primary' => true,
         'identity' => true
+    ])
+    ->addColumn('workflow_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
+        'unsigned' => true,
+        'nullable' => false,
     ])
     ->addColumn('condition_id', Varien_Db_Ddl_Table::TYPE_TEXT, 255, [
         'nullable' => false,
@@ -56,11 +60,15 @@ $workflowConditionTable = $connection->newTable($workflowConditionTableName)
 $connection->createTable($workflowConditionTable);
 
 $workflowActionTable = $connection->newTable($workflowActionTableName)
-    ->addColumn('workflow_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
+    ->addColumn('id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
         'unsigned' => true,
         'nullable' => false,
         'primary' => true,
         'identity' => true
+    ])
+    ->addColumn('workflow_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
+        'unsigned' => true,
+        'nullable' => false,
     ])
     ->addColumn('action_id', Varien_Db_Ddl_Table::TYPE_TEXT, 255, [
         'nullable' => false,

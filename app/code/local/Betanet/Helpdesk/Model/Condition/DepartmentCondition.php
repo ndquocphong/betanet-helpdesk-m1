@@ -12,4 +12,20 @@ class Betanet_Helpdesk_Model_Condition_DepartmentCondition extends Betanet_Helpd
     {
         return true;
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
+    public function getInputValueHtml()
+    {
+        $html = '<select style="width: 100%" multiple name="[value][]">';
+        foreach (Mage::getSingleton('betanet_helpdesk/config_source_department')->toArray() as $value => $label) {
+            $html .= "<option value=\"{$value}\">{$label}</option>";
+        }
+        $html .= '</select>';
+
+        return $html;
+    }
 }
