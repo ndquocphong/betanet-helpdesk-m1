@@ -77,6 +77,10 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
         $model = Mage::getModel('betanet_helpdesk/ticket');
         if (!empty($data['ticket_id'])) {
             $model->load($data['ticket_id']);
+            if (!$model->getId()) {
+                $this->_getSession()->addError('Request object does not exists.');
+                return $this->_redirect('*/*/');
+            }
         }
 
         $model->setData($data);
@@ -85,6 +89,16 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
 
         try {
             $model->save();
+
+            if (empty($data['ticket_id'])) {
+                $pic = Mage::getModel('betanet_helpdesk/pic')->load($model->getCreatedBy(), 'user_id');
+                if ($pic->getId()) {
+                    Mage::getSingleton('betanet_helpdesk/event_newTicketPicEvent')
+                        ->setTicket($model)
+                        ->dispatch();
+                }
+            }
+
             $this->_getSession()->setFormData(false);
             $this->_getSession()->addSuccess($this->__('The saving have been executed successfully.'));
             if ($this->getRequest()->getParam('back') === 'edit') {

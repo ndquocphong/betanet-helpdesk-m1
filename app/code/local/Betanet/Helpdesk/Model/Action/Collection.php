@@ -11,7 +11,6 @@ class Betanet_Helpdesk_Model_Action_Collection
     {
         $items = [
             new Betanet_Helpdesk_Model_Action_SendEmailPicAction(),
-            new Betanet_Helpdesk_Model_Action_SendEmailAction(),
             new Betanet_Helpdesk_Model_Action_SendEmailCustomerAction(),
             new Betanet_Helpdesk_Model_Action_ChangeDepartmentAction(),
             new Betanet_Helpdesk_Model_Action_ChangePicAction(),

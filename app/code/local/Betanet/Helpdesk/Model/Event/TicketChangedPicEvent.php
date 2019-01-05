@@ -1,3 +1,4 @@
+
 <?php
 
 class Betanet_Helpdesk_Model_Event_TicketChangedPicEvent extends Betanet_Helpdesk_Model_AbstractEvent
@@ -38,7 +39,6 @@ class Betanet_Helpdesk_Model_Event_TicketChangedPicEvent extends Betanet_Helpdes
     public function getAllowActions()
     {
         $collection = [
-            new Betanet_Helpdesk_Model_Action_SendEmailAction(),
             new Betanet_Helpdesk_Model_Action_SendEmailCustomerAction(),
             new Betanet_Helpdesk_Model_Action_SendEmailPicAction()
         ];
@@ -49,5 +49,41 @@ class Betanet_Helpdesk_Model_Event_TicketChangedPicEvent extends Betanet_Helpdes
         }
 
         return $result;
+    }
+
+    /**
+     * Get arguments for condition
+     *
+     * @param Betanet_Helpdesk_Model_ConditionInterface $condition
+     * @return mixed
+     * @throws Mage_Core_Exception
+     */
+    public function getConditionArgs(Betanet_Helpdesk_Model_ConditionInterface $condition)
+    {
+        switch (get_class($condition)) {
+            case Betanet_Helpdesk_Model_Condition_CustomerGroupCondition::class:
+                return $this->getTicket()->getCustomer();
+
+            default:
+                throw new Mage_Core_Exception('Unsupported condition');
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param Betanet_Helpdesk_Model_ActionInterface $action
+     * @return mixed
+     * @throws Mage_Core_Exception
+     */
+    public function getActionArgs(Betanet_Helpdesk_Model_ActionInterface $action)
+    {
+        switch (get_class($action)) {
+            case Betanet_Helpdesk_Model_Action_ChangeStatusAction::class:
+                return $this->getTicket();
+
+            default:
+                throw new Mage_Core_Exception('Unsupported action');
+        }
     }
 }

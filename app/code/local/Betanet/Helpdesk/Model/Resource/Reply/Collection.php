@@ -9,4 +9,12 @@ class Betanet_Helpdesk_Model_Resource_Reply_Collection extends Mage_Core_Model_R
     {
         $this->_init('betanet_helpdesk/reply');
     }
+    
+    public function addFilterLastReply()
+    {
+        $this->setPageSize(1)
+            ->setOrder('created_at');
+
+        return $this;
+    }
 }

@@ -2,8 +2,36 @@
 
 class Betanet_Helpdesk_Model_Action_ChangeDepartmentAction extends Betanet_Helpdesk_Model_AbstractAction
 {
-    public function execute($event)
+    /**
+     * {@inheritdoc}
+     *
+     * @param $ticket
+     * @throws Exception
+     */
+    public function execute($ticket)
     {
-        // TODO: Implement execute() method.
+        if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
+            return;
+        }
+
+        $ticket->setData('department_id', $this->getValue());
+        $ticket->save();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
+    public function getInputValueHtml()
+    {
+        $source =  Mage::getSingleton('betanet_helpdesk/config_source_department')->toOptionArray();
+        $html = '<select class="select" style="width: 100%" name="[value]">';
+        foreach ($source as $item) {
+            $html .= "<option value=\"{$item['value']}\">{$item['label']}</option>";
+        }
+        $html .= '</select>';
+
+        return $html;
     }
 }

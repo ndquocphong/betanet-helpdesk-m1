@@ -81,6 +81,13 @@ class Betanet_Helpdesk_TicketController extends Mage_Core_Controller_Front_Actio
 
                 try {
                     $model->save();
+
+                    if ($model->getCustomerId()) {
+                        Mage::getSingleton('betanet_helpdesk/event_newTicketCustomerEvent')
+                            ->setTicket($model)
+                            ->dispatch();
+                    }
+
                     Mage::getSingleton('core/session')->setFormData(false);
                     Mage::getSingleton('core/session')->addSuccess($this->__('The ticket was submitted successfully.'));
                 } catch (Mage_Core_Exception $e) {

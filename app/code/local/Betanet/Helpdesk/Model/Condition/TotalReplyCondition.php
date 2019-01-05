@@ -5,11 +5,45 @@ class Betanet_Helpdesk_Model_Condition_TotalReplyCondition extends Betanet_Helpd
     /**
      * {@inheritdoc}
      *
-     * @param $event
+     * @param $ticket
      * @return bool
      */
-    public function isValid($event)
+    public function isValid($ticket)
     {
-        return true;
+        if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
+            return false;
+        }
+
+        $total = Mage::getModel('betanet_helpdesk/reply')->getCollection()
+            ->addFieldToFilter('ticket_id', $ticket->getId())
+            ->getSize();
+
+        $operator = '';
+        $value = '';
+
+        foreach ((string)$this->getValue() as $c) {
+            if (is_numeric($c)) {
+                $value .= $c;
+            } else {
+                $operator .= $c;
+            }
+        }
+
+        switch ($operator) {
+            case '>':
+                return $total > $value;
+
+            case '>=':
+                return $total >= $value;
+
+            case '<':
+                return $total < $value;
+
+            case '<=':
+                return $total <= $value;
+
+            default:
+                return $total == $value;
+        }
     }
 }

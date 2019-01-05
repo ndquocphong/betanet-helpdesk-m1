@@ -6,4 +6,21 @@ class Betanet_Helpdesk_Model_Action_SendEmailPicAction extends Betanet_Helpdesk_
     {
         // TODO: Implement execute() method.
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
+    public function getInputValueHtml()
+    {
+        $source =  Mage::getSingleton('adminhtml/system_config_source_email_template')->toOptionArray();
+        $html = '<select class="select" style="width: 100%" name="[value]">';
+        foreach ($source as $item) {
+            $html .= "<option value=\"{$item['value']}\">{$item['label']}</option>";
+        }
+        $html .= '</select>';
+
+        return $html;
+    }
 }

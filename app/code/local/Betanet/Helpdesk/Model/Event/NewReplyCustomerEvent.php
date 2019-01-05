@@ -42,7 +42,6 @@ class Betanet_Helpdesk_Model_Event_NewReplyCustomerEvent extends Betanet_Helpdes
             new Betanet_Helpdesk_Model_Action_ChangePicAction(),
             new Betanet_Helpdesk_Model_Action_ChangePriorityAction(),
             new Betanet_Helpdesk_Model_Action_ChangeStatusAction(),
-            new Betanet_Helpdesk_Model_Action_SendEmailAction(),
             new Betanet_Helpdesk_Model_Action_SendEmailCustomerAction(),
             new Betanet_Helpdesk_Model_Action_SendEmailPicAction()
         ];
@@ -53,5 +52,44 @@ class Betanet_Helpdesk_Model_Event_NewReplyCustomerEvent extends Betanet_Helpdes
         }
 
         return $result;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param Betanet_Helpdesk_Model_ConditionInterface $condition
+     * @return mixed
+     * @throws Mage_Core_Exception
+     */
+    public function getConditionArgs(Betanet_Helpdesk_Model_ConditionInterface $condition)
+    {
+        switch (get_class($condition)) {
+            case Betanet_Helpdesk_Model_Condition_CustomerGroupCondition::class:
+                return $this->getReply()->getCustomer();
+
+            default:
+                throw new Mage_Core_Exception('Unsupported condition');
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param Betanet_Helpdesk_Model_ActionInterface $action
+     * @return mixed
+     * @throws Mage_Core_Exception
+     */
+    public function getActionArgs(Betanet_Helpdesk_Model_ActionInterface $action)
+    {
+        switch (get_class($action)) {
+            case Betanet_Helpdesk_Model_Action_ChangeStatusAction::class:
+            case Betanet_Helpdesk_Model_Action_ChangeDepartmentAction::class:
+            case Betanet_Helpdesk_Model_Action_ChangePriorityAction::class:
+            case Betanet_Helpdesk_Model_Action_ChangePicAction::class:
+                return $this->getReply()->getTicket();
+
+            default:
+                throw new Mage_Core_Exception('Unsupported action');
+        }
     }
 }

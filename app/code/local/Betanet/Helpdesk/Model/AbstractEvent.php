@@ -20,14 +20,14 @@ abstract class Betanet_Helpdesk_Model_AbstractEvent extends Varien_Object implem
 
     /**
      * Dispatch event
-     *
-     * @param $eventArgs
      */
-    public function dispatch($eventArgs)
+    public function dispatch()
     {
         /** @var Betanet_Helpdesk_Model_Workflow $workflow */
         foreach ($this->getEnabledWorkflows() as $workflow) {
-            $workflow->execute($eventArgs);
+            if ($workflow->canExecute($this)) {
+                $workflow->execute($this);
+            }
         }
     }
 

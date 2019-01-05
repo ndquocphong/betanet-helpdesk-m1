@@ -8,9 +8,13 @@ class Betanet_Helpdesk_Model_Condition_DepartmentCondition extends Betanet_Helpd
      * @param $event
      * @return bool
      */
-    public function isValid($event)
+    public function isValid($department)
     {
-        return true;
+        if (!$department instanceof Betanet_Helpdesk_Model_Department) {
+            return false;
+        }
+
+        return in_array($department->getId(), explode(',', $this->getValue()));
     }
 
     /**

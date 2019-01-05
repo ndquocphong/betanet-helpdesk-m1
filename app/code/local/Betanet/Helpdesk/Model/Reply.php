@@ -11,6 +11,22 @@ class Betanet_Helpdesk_Model_Reply extends Mage_Core_Model_Abstract
     }
 
     /**
+     * Get customer model
+     *
+     * @return Mage_Customer_Model_Customer
+     */
+    public function getCustomer()
+    {
+        if ($this->hasData('customer')) {
+            return $this->getData('customer');
+        }
+
+        $this->setData('customer', Mage::getModel('customer/customer')->load($this->getData('customer_id')));
+
+        return $this->getData('customer');
+    }
+
+    /**
      * Get status model
      *
      * @return Betanet_Helpdesk_Model_Status|Mage_Core_Model_Abstract

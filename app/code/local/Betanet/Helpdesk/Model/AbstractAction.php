@@ -25,6 +25,6 @@ abstract class Betanet_Helpdesk_Model_AbstractAction extends Varien_Object imple
      */
     public function getInputValueHtml()
     {
-        return '<input type="text" class="input-text wide" name="[value]" />';
+        return '<input type="text" style="width: 100%" class="input-text wide" name="[value]" />';
     }
 }

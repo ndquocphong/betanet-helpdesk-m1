@@ -53,7 +53,7 @@ class Betanet_Helpdesk_Model_Ticket extends Mage_Core_Model_Abstract
             return $this->getData('customer');
         }
 
-        $customer = Mage::getModel('customer/entity')->load($this->getCustomerId());
+        $customer = Mage::getModel('customer/customer')->load($this->getCustomerId());
         if ($customer->getId()) {
             $this->setData('customer', $customer);
         } else {

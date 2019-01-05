@@ -5,11 +5,17 @@ class Betanet_Helpdesk_Model_Condition_TicketBodyFirstLineCondition extends Beta
     /**
      * {@inheritdoc}
      *
-     * @param $event
+     * @param $ticket
      * @return bool
      */
-    public function isValid($event)
+    public function isValid($ticket)
     {
-        return true;
+        if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
+            return false;
+        }
+
+        $firstLine = strtok($ticket->getBody(), "\n");
+
+        return strpos($firstLine, $this->getValue()) !== false;
     }
 }

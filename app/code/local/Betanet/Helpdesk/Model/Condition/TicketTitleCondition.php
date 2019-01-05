@@ -5,11 +5,15 @@ class Betanet_Helpdesk_Model_Condition_TicketTitleCondition extends Betanet_Help
     /**
      * {@inheritdoc}
      *
-     * @param $event
+     * @param $ticket
      * @return bool
      */
-    public function isValid($event)
+    public function isValid($ticket)
     {
-        return true;
+        if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
+            return false;
+        }
+
+        return strpos($ticket->getTitle(), $this->getValue()) !== false;
     }
 }

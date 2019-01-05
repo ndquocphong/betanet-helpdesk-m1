@@ -25,6 +25,6 @@ abstract class Betanet_Helpdesk_Model_AbstractCondition extends Varien_Object im
      */
     public function getInputValueHtml()
     {
-        return '<input type="text" class="input-text wide" name="[value]" />';
+        return '<input type="text" style="width: 100%" class="input-text wide" name="[value]" />';
     }
 }
