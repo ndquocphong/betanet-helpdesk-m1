@@ -5,16 +5,16 @@ class Betanet_Helpdesk_Model_Condition_TicketStatusCondition extends Betanet_Hel
     /**
      * {@inheritdoc}
      *
-     * @param $ticket
+     * @param $status
      * @return bool
      */
-    public function isValid($ticket)
+    public function isValid($status)
     {
-        if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
+        if (!$status instanceof Betanet_Helpdesk_Model_Status) {
             return false;
         }
 
-        return in_array($ticket->getStatusId(), explode(',', $this->getValue()));
+        return in_array($status->getId(), explode(',', $this->getValue()));
     }
 
     /**

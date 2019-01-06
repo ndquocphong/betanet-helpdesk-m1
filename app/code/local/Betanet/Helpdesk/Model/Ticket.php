@@ -17,7 +17,7 @@ class Betanet_Helpdesk_Model_Ticket extends Mage_Core_Model_Abstract
      */
     public function getDepartment()
     {
-        if ($this->getData('department') instanceof Betanet_Helpdesk_Model_Department) {
+        if ($this->hasData('department')) {
             return $this->getData('department');
         }
 
@@ -33,7 +33,7 @@ class Betanet_Helpdesk_Model_Ticket extends Mage_Core_Model_Abstract
      */
     public function getStatus()
     {
-        if ($this->getData('status') instanceof Betanet_Helpdesk_Model_Status) {
+        if ($this->hasData('status')) {
             return $this->getData('status');
         }
 
@@ -82,5 +82,21 @@ class Betanet_Helpdesk_Model_Ticket extends Mage_Core_Model_Abstract
         }
 
         return $this->getData('created_user');
+    }
+
+    /**
+     * Get pic model
+     *
+     * @return Betanet_Helpdesk_Model_Pic
+     */
+    public function getPic()
+    {
+        if ($this->hasData('pic')) {
+            return $this->getData('pic');
+        }
+
+        $this->setData('pic', Mage::getModel('betanet_helpdesk/pic')->load($this->getData('pic_id')));
+
+        return $this->getData('pic');
     }
 }

@@ -73,6 +73,10 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_ReplyController extends Mage_Adminhtml
             $reply->setMessage($message);
             $reply->save();
 
+            Mage::getSingleton('betanet_helpdesk/event_newReplyPicEvent')
+                ->setReply($reply)
+                ->dispatch();
+
             $ticket->setStatusId($data['status_id']);
             $ticket->save();
 

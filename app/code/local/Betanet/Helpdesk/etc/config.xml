@@ -128,4 +128,13 @@
             </updates>
         </layout>
     </adminhtml>
+    <crontab>
+        <jobs>
+            <betanet_helpdesk_recurring_task>
+                <run>
+                    <model>betanet_helpdesk/cron::run</model>
+                </run>
+            </betanet_helpdesk_recurring_task>
+        </jobs>
+    </crontab>
 </config>

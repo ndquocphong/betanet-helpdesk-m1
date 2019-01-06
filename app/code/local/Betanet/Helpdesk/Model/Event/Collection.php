@@ -15,7 +15,7 @@ class Betanet_Helpdesk_Model_Event_Collection
             new Betanet_Helpdesk_Model_Event_NewReplyCustomerEvent(),
             new Betanet_Helpdesk_Model_Event_NewReplyPicEvent(),
             new Betanet_Helpdesk_Model_Event_TicketChangedPicEvent(),
-            new Betanet_Helpdesk_Model_Event_RecurringEvent()
+//            new Betanet_Helpdesk_Model_Event_RecurringEvent()
         ];
 
         $collection = [];

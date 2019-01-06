@@ -61,6 +61,24 @@ class Betanet_Helpdesk_Model_Event_NewTicketCustomerEvent extends Betanet_Helpde
             case Betanet_Helpdesk_Model_Condition_CustomerGroupCondition::class:
                 return $this->getTicket()->getCustomer();
 
+            case Betanet_Helpdesk_Model_Condition_DepartmentCondition::class:
+                return $this->getTicket()->getDepartment();
+
+            case Betanet_Helpdesk_Model_Condition_PicCondition::class:
+                return $this->getTicket()->getPic();
+
+            case Betanet_Helpdesk_Model_Condition_TicketStatusCondition::class:
+                return $this->getTicket()->getStatus();
+
+            case Betanet_Helpdesk_Model_Condition_TotalReplyCondition::class:
+            case Betanet_Helpdesk_Model_Condition_TotalReplyPicCondition::class:
+            case Betanet_Helpdesk_Model_Condition_TotalReplyCustomerCondition::class:
+            case Betanet_Helpdesk_Model_Condition_LastReplyByCondition::class:
+            case Betanet_Helpdesk_Model_Condition_LastReplyHoursCondition::class:
+            case Betanet_Helpdesk_Model_Condition_TicketTitleCondition::class:
+            case Betanet_Helpdesk_Model_Condition_TicketBodyFirstLineCondition::class:
+                return $this->getTicket();
+
             default:
                 throw new Mage_Core_Exception('Unsupported condition');
         }
@@ -80,6 +98,8 @@ class Betanet_Helpdesk_Model_Event_NewTicketCustomerEvent extends Betanet_Helpde
             case Betanet_Helpdesk_Model_Action_ChangeDepartmentAction::class:
             case Betanet_Helpdesk_Model_Action_ChangePriorityAction::class:
             case Betanet_Helpdesk_Model_Action_ChangePicAction::class:
+            case Betanet_Helpdesk_Model_Action_SendEmailPicAction::class:
+            case Betanet_Helpdesk_Model_Action_SendEmailCustomerAction::class:
                 return $this->getTicket();
 
             default:

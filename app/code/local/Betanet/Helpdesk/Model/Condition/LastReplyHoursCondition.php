@@ -27,7 +27,7 @@ class Betanet_Helpdesk_Model_Condition_LastReplyHoursCondition extends Betanet_H
             $operator = '';
             $value = '';
 
-            foreach ((string)$this->getValue() as $c) {
+            foreach (str_split($this->getValue()) as $c) {
                 if (is_numeric($c)) {
                     $value .= $c;
                 } else {

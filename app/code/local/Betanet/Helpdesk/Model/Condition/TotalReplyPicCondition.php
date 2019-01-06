@@ -5,10 +5,10 @@ class Betanet_Helpdesk_Model_Condition_TotalReplyPicCondition extends Betanet_He
     /**
      * {@inheritdoc}
      *
-     * @param $event
+     * @param $ticket
      * @return bool
      */
-    public function isValid($event)
+    public function isValid($ticket)
     {
         if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
             return false;
@@ -22,7 +22,7 @@ class Betanet_Helpdesk_Model_Condition_TotalReplyPicCondition extends Betanet_He
         $operator = '';
         $value = '';
 
-        foreach ((string)$this->getValue() as $c) {
+        foreach (str_split($this->getValue()) as $c) {
             if (is_numeric($c)) {
                 $value .= $c;
             } else {

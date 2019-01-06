@@ -3,11 +3,31 @@
 class Betanet_Helpdesk_Model_Action_SendEmailCustomerAction extends Betanet_Helpdesk_Model_AbstractAction
 {
     /**
-     * @param $event
+     * @param $ticket
+     *
+     * @throws Mage_Core_Exception
      */
-    public function execute($event)
+    public function execute($ticket)
     {
-        // TODO: Implement execute() method.
+        if (!$ticket instanceof Betanet_Helpdesk_Model_Ticket) {
+            return;
+        }
+
+        $translate = Mage::getSingleton('core/translate');
+        /* @var $translate Mage_Core_Model_Translate */
+        $translate->setTranslateInline(false);
+
+        /** @var Mage_Core_Model_Email_Template $email */
+        $email = Mage::getModel('core/email_template');
+        $recipient = $ticket->getCustomerEmail();
+        $email->sendTransactional(
+            $this->getValue(),
+            Mage::getStoreConfig('contacts/email/sender_email_identity'),
+            $recipient,
+            null
+        );
+
+        $translate->setTranslateInline(true);
     }
 
     /**

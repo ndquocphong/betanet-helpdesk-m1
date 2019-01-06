@@ -47,6 +47,10 @@ class Betanet_Helpdesk_ReplyController extends Mage_Core_Controller_Front_Action
             ]);
             $reply->save();
 
+            Mage::getSingleton('betanet_helpdesk/event_newReplyCustomerEvent')
+                ->setReply($reply)
+                ->dispatch();
+
         } catch (Mage_Core_Exception $e) {
             $result = ['message' => $e->getMessage()];
             return $this->getResponse()

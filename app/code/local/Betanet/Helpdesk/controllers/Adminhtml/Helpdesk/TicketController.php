@@ -97,6 +97,12 @@ class Betanet_Helpdesk_Adminhtml_Helpdesk_TicketController extends Mage_Adminhtm
                         ->setTicket($model)
                         ->dispatch();
                 }
+            } else {
+                if ($model->dataHasChangedFor('pic_id')) {
+                    Mage::getSingleton('betanet_helpdesk/event_ticketChangedPicEvent')
+                        ->setTicket($model)
+                        ->dispatch();
+                }
             }
 
             $this->_getSession()->setFormData(false);

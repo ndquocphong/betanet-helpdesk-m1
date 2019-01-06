@@ -21,7 +21,7 @@ class Betanet_Helpdesk_Model_Condition_TotalReplyCondition extends Betanet_Helpd
         $operator = '';
         $value = '';
 
-        foreach ((string)$this->getValue() as $c) {
+        foreach (str_split($this->getValue()) as $c) {
             if (is_numeric($c)) {
                 $value .= $c;
             } else {

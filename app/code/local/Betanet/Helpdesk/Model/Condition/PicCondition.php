@@ -14,6 +14,8 @@ class Betanet_Helpdesk_Model_Condition_PicCondition extends Betanet_Helpdesk_Mod
             return false;
         }
 
+        error_log(__METHOD__);
+
         return in_array($pic->getId(), explode(',', $this->getValue()));
     }
 
